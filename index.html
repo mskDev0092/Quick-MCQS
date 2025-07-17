@@ -1,507 +1,939 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MCQ Quiz Platform</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-    }
-    .min-h-screen { min-height: 100vh; }
-    .bg-gradient-to-br { background: linear-gradient(to bottom right, #1e293b, #374151, #4b5563); }
-    .backdrop-blur-lg { backdrop-filter: blur(10px); }
-    .bg-white\/5 { background-color: rgba(255, 255, 255, 0.05); }
-    .text-white { color: white; }
-    .text-white\/70 { color: rgba(255, 255, 255, 0.7); }
-    .text-white\/50 { color: rgba(255, 255, 255, 0.5); }
-    .text-white\/30 { color: rgba(255, 255, 255, 0.3); }
-    .focus\:outline-none:focus { outline: none; }
-    .focus\:ring-2:focus { box-shadow: 0 0 0 2px rgba(255,255,255,0.4); }
-    .transition-all { transition: all 0.3s ease-in-out; }
-    .duration-300 { transition-duration: 300ms; }
-    .rounded-lg { border-radius: 0.5rem; }
-    .rounded-2xl { border-radius: 1rem; }
-    .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
-    .shadow-2xl { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 8px 10px -6px rgba(0,0,0,0.1); }
-    .hidden { display: none; }
-    .flex { display: flex; }
-    .items-center { align-items: center; }
-    .justify-center { justify-content: center; }
-    .justify-between { justify-content: space-between; }
-    .gap-4 { gap: 1rem; }
-    .p-4 { padding: 1rem; }
-    .p-6 { padding: 1.5rem; }
-    .space-y-6 > * + * { margin-top: 1.5rem; }
-    .w-full { width: 100%; }
-    .max-w-4xl { max-width: 64rem; }
-    .h-64 { height: 16rem; }
-    .w-16 { width: 4rem; }
-    .h-2 { height: 0.5rem; }
-    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
-    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
-    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
-    .font-bold { font-weight: bold; }
-    .font-semibold { font-weight: 600; }
-    .text-center { text-align: center; }
-    .cursor-not-allowed { cursor: not-allowed; }
-    .hover\:bg-white\/90:hover { background-color: rgba(255,255,255,0.9); }
-    .hover\:bg-gray-600:hover { background-color: #4b5563; }
-    .hover\:bg-green-700:hover { background-color: #15803d; }
-    .hover\:bg-blue-700:hover { background-color: #1d4ed8; }
-    .bg-white { background-color: #fff; }
-    .bg-white\/10 { background-color: rgba(255,255,255,0.1); }
-    .bg-white\/20 { background-color: rgba(255,255,255,0.2); }
-    .bg-white\/30 { background-color: rgba(255,255,255,0.3); }
-    .bg-gray-900 { background-color: #111827; }
-    .bg-gray-700 { background-color: #374151; }
-    .bg-gray-800 { background-color: #1f2937; }
-    .bg-green-600 { background-color: #16a34a; }
-    .bg-blue-600 { background-color: #2563eb; }
-    .text-gray-900 { color: #111827; }
-    .font-mono { font-family: monospace; }
-    .opacity-50 { opacity: 0.5; }
-    .overflow-hidden { overflow: hidden; }
-    .border { border-width: 1px; border-style: solid; }
-    .border-white\/10 { border-color: rgba(255,255,255,0.1); }
-    .mt-4 { margin-top: 1rem; }
-    .mt-6 { margin-top: 1.5rem; }
-    .mb-2 { margin-bottom: 0.5rem; }
-    .mb-4 { margin-bottom: 1rem; }
-    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-    .px-4 { padding-left: 1rem; padding-right: 1rem; }
-    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .mt-4 { margin-top: 1rem; }
-    .mt-6 { margin-top: 1.5rem; }
-    .gap-4 { gap: 1rem; }
-    .transition-all { transition: all 0.3s; }
-    .duration-200 { transition-duration: 200ms; }
-    .duration-300 { transition-duration: 300ms; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlassQuiz - Premium MCQ Testing Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: rgba(255, 255, 255, 0.1);
+            --secondary-bg: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --accent-color: #6366f1;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --warning-color: #f59e0b;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --backdrop: blur(20px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--gradient-1);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .glass-card {
+            background: var(--primary-bg);
+            backdrop-filter: var(--backdrop);
+            -webkit-backdrop-filter: var(--backdrop);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .upload-section {
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: var(--accent-color);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .upload-area.dragover {
+            border-color: var(--success-color);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .upload-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .upload-input {
+            display: none;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: var(--backdrop);
+            -webkit-backdrop-filter: var(--backdrop);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn.primary {
+            background: var(--gradient-3);
+            border: none;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+        }
+
+        .btn.primary:hover {
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.6);
+        }
+
+        .quiz-section {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--secondary-bg);
+            border-radius: 15px;
+        }
+
+        .quiz-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 8px;
+            background: var(--secondary-bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-3);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .question-card {
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .question-number {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .options-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .option {
+            padding: 1.2rem;
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: var(--accent-color);
+        }
+
+        .option.correct {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: var(--success-color);
+        }
+
+        .option.incorrect {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: var(--error-color);
+        }
+
+        .option input[type="radio"] {
+            display: none;
+        }
+
+        .option-label {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .option.selected .option-label {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .option.selected .option-label::after {
+            content: '✓';
+            color: white;
+            font-size: 14px;
+        }
+
+        .quiz-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .results-section {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .results-header {
+            margin-bottom: 2rem;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            margin: 2rem auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-ring {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(var(--success-color) 0deg, var(--success-color) var(--score-deg), var(--secondary-bg) var(--score-deg));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .score-inner {
+            width: 130px;
+            height: 130px;
+            background: var(--primary-bg);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: var(--backdrop);
+        }
+
+        .score-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--success-color);
+        }
+
+        .score-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .results-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .summary-card {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .summary-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .summary-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .review-section {
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .review-item {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            background: var(--secondary-bg);
+        }
+
+        .review-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-answer {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .review-correct {
+            color: var(--success-color);
+        }
+
+        .review-incorrect {
+            color: var(--error-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 2rem;
+            background: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            backdrop-filter: var(--backdrop);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .upload-section,
+            .question-card {
+                padding: 1.5rem;
+            }
+
+            .quiz-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .progress-bar {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .quiz-actions {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .results-summary {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div id="app" class="min-h-screen bg-gradient-to-br flex items-center justify-center p-4">
-    <div class="w-full max-w-4xl backdrop-blur-lg bg-white/5 rounded-2xl shadow-2xl overflow-hidden border border-white/10">
-      <div class="p-6 space-y-6">
-        <!-- Step 0: Name & Roll -->
-        <div id="step-name-roll" class="space-y-6">
-          <h1 class="text-3xl font-bold text-white text-center">MCQ Quiz Platform</h1>
-          <div class="bg-white/5 p-6 rounded-lg shadow-lg">
-            <label class="block text-white mb-2" for="name">Your Name</label>
-            <input
-              id="name"
-              type="text"
-              class="w-full p-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/40 mb-4"
-              placeholder="Enter your name"
-              autocomplete="off"
-            />
-            <label class="block text-white mb-2" for="rollNo">Roll Number</label>
-            <input
-              id="rollNo"
-              type="text"
-              class="w-full p-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/40"
-              placeholder="Enter your roll number"
-              autocomplete="off"
-            />
-            <button
-              id="continue-btn"
-              type="button"
-              class="mt-6 w-full py-3 font-semibold rounded-lg transition-all duration-300 bg-white/30 text-white cursor-not-allowed"
-              disabled
-            >
-              Continue
-            </button>
-          </div>
-        </div>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-brain"></i> GlassQuiz</h1>
+            <p>Modern MCQ Testing Platform with Premium Glassmorphism Design</p>
+        </header>
 
-        <!-- Step 1: Paste MCQs -->
-        <div id="step-mcqs" class="space-y-6 hidden">
-          <h2 class="text-2xl font-bold text-white text-center">Paste Your MCQs</h2>
-          <p class="text-white/80 text-center">Paste your bulk MCQs or upload a .txt file below</p>
-          <div class="bg-white/5 p-4 rounded-lg text-sm text-white/70 font-mono">
-            1. Question text here<br />
-            A) Option A<br />
-            B) Option B<br />
-            C) Option C<br />
-            D) Option D<br />
-            Answer: A
-          </div>
-          <textarea
-            id="mcqs-text"
-            class="w-full h-64 p-4 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/40"
-            placeholder="Paste your MCQs here..."
-          ></textarea>
-          <div>
-            <label class="block text-white mb-2" for="fileUpload">Or upload .txt file</label>
-            <input
-              id="fileUpload"
-              type="file"
-              accept=".txt"
-              class="text-white"
-            />
-          </div>
-          <button
-            id="start-quiz-btn"
-            type="button"
-            class="w-full py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-white/90 transition-all duration-300 shadow-lg opacity-50 cursor-not-allowed"
-            disabled
-          >
-            Start Quiz
-          </button>
-        </div>
-
-        <!-- Step 2: Quiz -->
-        <div id="step-quiz" class="space-y-6 hidden">
-          <div class="flex justify-between items-center">
-            <h2 class="text-xl font-semibold text-white" id="question-number">Question 1 of X</h2>
-            <div class="w-16 h-2 bg-white/20 rounded-full overflow-hidden">
-              <div
-                id="progress-bar"
-                class="h-full bg-white transition-all duration-300"
-                style="width: 0%;"
-              ></div>
-            </div>
-          </div>
-          <div class="bg-white/10 p-6 rounded-lg shadow-lg">
-            <p class="text-white text-lg mb-4" id="current-question">Loading question...</p>
-            <div class="space-y-3" id="options-container"></div>
-          </div>
-          <button
-            id="next-question-btn"
-            type="button"
-            class="w-full py-3 rounded-lg font-semibold transition-all duration-300 bg-white/30 text-white cursor-not-allowed"
-            disabled
-          >
-            Next Question
-          </button>
-        </div>
-
-        <!-- Step 3: Results -->
-        <div id="step-results" class="space-y-6 hidden">
-          <div class="flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-white">Your Results</h2>
-            <button
-              id="back-to-home-btn"
-              type="button"
-              class="py-2 px-4 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-all duration-300"
-            >
-              Back
-            </button>
-          </div>
-          <div id="results-container" class="hidden">
-            <div class="bg-white/10 p-6 rounded-lg text-white shadow-lg">
-              <p><strong>Name:</strong> <span id="result-name"></span></p>
-              <p><strong>Roll No:</strong> <span id="result-rollno"></span></p>
-              <p><strong>Score:</strong> <span id="result-score"></span></p>
-              <p><strong>Percentage:</strong> <span id="result-percentage"></span>%</p>
-              <p><strong>Date:</strong> <span id="result-date"></span></p>
-              <p><strong>Time Taken:</strong> <span id="result-time-taken"></span> seconds</p>
-              <div class="flex justify-center gap-4 mt-4">
-                <button
-                  id="download-results-btn"
-                  type="button"
-                  class="py-2 px-6 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-all duration-300"
-                >
-                  Download Results
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section id="uploadSection" class="glass-card upload-section">
+                <h2>Upload Your MCQs</h2>
+                <p>Upload a text file with your MCQs in plain English format</p>
+                
+                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <div class="upload-text">
+                        Drag & drop your file here or click to browse
+                    </div>
+                    <div class="upload-hint">
+                        Format: Question|OptionA|OptionB|OptionC|OptionD|CorrectOption
+                    </div>
+                </div>
+                
+                <input type="file" id="fileInput" class="upload-input" accept=".txt">
+                
+                <button class="btn primary" onclick="parseQuestions()">
+                    <i class="fas fa-play"></i> Start Quiz
                 </button>
-                <button
-                  id="print-results-btn"
-                  type="button"
-                  class="py-2 px-6 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-300"
-                >
-                  Print Results
-                </button>
-              </div>
-            </div>
-          </div>
-          <p id="no-results" class="text-white text-center hidden">No results found for this roll number.</p>
-        </div>
-      </div>
+                
+                <div id="sampleFormat" style="margin-top: 2rem; padding: 1rem; background: var(--secondary-bg); border-radius: 10px;">
+                    <h4>Sample Format:</h4>
+                    <pre style="text-align: left; margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+What is the capital of France?|London|Paris|Berlin|Madrid|B
+Which planet is known as the Red Planet?|Venus|Mars|Jupiter|Saturn|B
+                    </pre>
+                </div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section id="quizSection" class="quiz-section">
+                <div class="quiz-header glass-card">
+                    <div class="quiz-title">
+                        <h2><i class="fas fa-question-circle"></i> Quiz in Progress</h2>
+                    </div>
+                    <div class="quiz-progress">
+                        <span id="questionCounter">Question 1 of 10</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span id="timeElapsed">00:00</span>
+                    </div>
+                </div>
+
+                <div id="questionContainer">
+                    <!-- Questions will be dynamically inserted here -->
+                </div>
+
+                <div class="quiz-actions">
+                    <button class="btn" id="prevBtn" onclick="previousQuestion()" disabled>
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <button class="btn" id="flagBtn" onclick="flagQuestion()">
+                        <i class="fas fa-flag"></i> Flag
+                    </button>
+                    <button class="btn primary" id="nextBtn" onclick="nextQuestion()">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="btn primary hidden" id="submitBtn" onclick="submitQuiz()">
+                        <i class="fas fa-check-circle"></i> Submit Quiz
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section">
+                <div class="results-header">
+                    <h2><i class="fas fa-trophy"></i> Quiz Results</h2>
+                    <p>Congratulations! You've completed the quiz.</p>
+                </div>
+
+                <div class="score-circle">
+                    <div class="score-ring" id="scoreRing">
+                        <div class="score-inner">
+                            <div class="score-text" id="scoreText">0%</div>
+                            <div class="score-label">Score</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-summary">
+                    <div class="summary-card glass-card">
+                        <div class="summary-icon" style="color: var(--success-color);">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="summary-value" id="correctCount">0</div>
+                        <div class="summary-label">Correct Answers</div>
+                    </div>
+                    <div class="summary-card glass-card">
+                        <div class="summary-icon" style="color: var(--error-color);">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class="summary-value" id="incorrectCount">0</div>
+                        <div class="summary-label">Incorrect Answers</div>
+                    </div>
+                    <div class="summary-card glass-card">
+                        <div class="summary-icon" style="color: var(--warning-color);">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="summary-value" id="totalTime">00:00</div>
+                        <div class="summary-label">Total Time</div>
+                    </div>
+                </div>
+
+                <div class="review-section">
+                    <h3>Review Your Answers</h3>
+                    <div id="reviewContainer">
+                        <!-- Review items will be inserted here -->
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button class="btn primary" onclick="restartQuiz()">
+                        <i class="fas fa-redo"></i> Take Another Quiz
+                    </button>
+                </div>
+            </section>
+        </main>
     </div>
-  </div>
-  <script defer>
-    // DOM Elements
-    const stepNameRoll = document.getElementById('step-name-roll');
-    const stepMcqs = document.getElementById('step-mcqs');
-    const stepQuiz = document.getElementById('step-quiz');
-    const stepResults = document.getElementById('step-results');
-    const continueBtn = document.getElementById('continue-btn');
-    const mcqsText = document.getElementById('mcqs-text');
-    const fileUpload = document.getElementById('fileUpload');
-    const startQuizBtn = document.getElementById('start-quiz-btn');
-    const questionNumber = document.getElementById('question-number');
-    const currentQuestion = document.getElementById('current-question');
-    const optionsContainer = document.getElementById('options-container');
-    const nextQuestionBtn = document.getElementById('next-question-btn');
-    const progressBar = document.getElementById('progress-bar');
-    const backToHomeBtn = document.getElementById('back-to-home-btn');
-    const resultsContainer = document.getElementById('results-container');
-    const noResults = document.getElementById('no-results');
-    const downloadResultsBtn = document.getElementById('download-results-btn');
-    const printResultsBtn = document.getElementById('print-results-btn');
 
-    let step = 0;
-    let name = '';
-    let rollNo = '';
-    let parsedMCQs = [];
-    let currentQuestionIndex = 0;
-    let userAnswers = {};
-    let quizCompleted = false;
-    let startTime = null;
-    let results = JSON.parse(localStorage.getItem('quizResults')) || {};
+    <div class="toast" id="toast">
+        <span id="toastMessage"></span>
+    </div>
 
-    continueBtn.addEventListener('click', () => {
-      name = document.getElementById('name').value.trim();
-      rollNo = document.getElementById('rollNo').value.trim();
-      if (name && rollNo) {
-        step = 1;
-        toggleSteps();
-      }
-    });
+    <script>
+        let questions = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let flaggedQuestions = [];
+        let startTime;
+        let timerInterval;
 
-    document.getElementById('name').addEventListener('input', validateContinueBtn);
-    document.getElementById('rollNo').addEventListener('input', validateContinueBtn);
+        // File upload handling
+        const uploadArea = document.querySelector('.upload-area');
+        const fileInput = document.getElementById('fileInput');
 
-    mcqsText.addEventListener('input', validateStartQuizBtn);
-    fileUpload.addEventListener('change', handleFileUpload);
-
-    startQuizBtn.addEventListener('click', parseMCQs);
-
-    nextQuestionBtn.addEventListener('click', goToNextQuestion);
-
-    backToHomeBtn.addEventListener('click', goBackToHome);
-
-    downloadResultsBtn.addEventListener('click', downloadResults);
-
-    printResultsBtn.addEventListener('click', () => window.print());
-
-    function validateContinueBtn() {
-      const nameValue = document.getElementById('name').value.trim();
-      const rollNoValue = document.getElementById('rollNo').value.trim();
-      continueBtn.disabled = !(nameValue && rollNoValue);
-      continueBtn.classList.toggle('bg-white/30', !(nameValue && rollNoValue));
-      continueBtn.classList.toggle('cursor-not-allowed', !(nameValue && rollNoValue));
-    }
-
-    function validateStartQuizBtn() {
-      const mcqsValue = mcqsText.value.trim();
-      startQuizBtn.disabled = !mcqsValue;
-      startQuizBtn.classList.toggle('opacity-50', !mcqsValue);
-      startQuizBtn.classList.toggle('cursor-not-allowed', !mcqsValue);
-    }
-
-    function handleFileUpload(event) {
-      const file = event.target.files[0];
-      if (file && file.type === 'text/plain') {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          mcqsText.value = event.target.result;
-          mcqsText.dispatchEvent(new Event('input'));
-        };
-        reader.readAsText(file);
-      } else {
-        alert('Please upload a valid .txt file.');
-      }
-    }
-
-    function parseMCQs() {
-      const lines = mcqsText.value.trim().split('\n');
-      const questions = [];
-      let currentQuestion = null;
-
-      for (let line of lines) {
-        line = line.trim();
-        if (!line) continue;
-
-        if (/^\d+\./.test(line)) {
-          if (currentQuestion && currentQuestion.options.length >= 2 && currentQuestion.answer) {
-            questions.push(currentQuestion);
-          }
-          currentQuestion = {
-            question: line.replace(/^\d+\.\s*/, ''),
-            options: [],
-            answer: ''
-          };
-        } else if (/^[A-Da-d]\)/.test(line)) {
-          if (currentQuestion) currentQuestion.options.push(line);
-        } else if (/^Answer:\s*[A-Da-d]/.test(line)) {
-          const match = line.match(/Answer:\s*([A-Da-d])/);
-          if (match && currentQuestion) {
-            currentQuestion.answer = match[1].toUpperCase();
-          }
-        }
-      }
-
-      if (currentQuestion && currentQuestion.options.length >= 2 && currentQuestion.answer) {
-        questions.push(currentQuestion);
-      }
-
-      if (questions.length === 0) {
-        alert('Failed to parse MCQs. Please check the format.');
-        return;
-      }
-
-      parsedMCQs = questions;
-      step = 2;
-      currentQuestionIndex = 0;
-      userAnswers = {};
-      quizCompleted = false;
-      startTime = Date.now();
-      toggleSteps();
-      loadCurrentQuestion();
-    }
-
-    function toggleSteps() {
-      stepNameRoll.classList.toggle('hidden', step !== 0);
-      stepMcqs.classList.toggle('hidden', step !== 1);
-      stepQuiz.classList.toggle('hidden', step !== 2);
-      stepResults.classList.toggle('hidden', step !== 3);
-    }
-
-    function loadCurrentQuestion() {
-      if (currentQuestionIndex < parsedMCQs.length) {
-        const question = parsedMCQs[currentQuestionIndex];
-        currentQuestion.textContent = question.question;
-        optionsContainer.innerHTML = '';
-        question.options.forEach((option) => {
-          const button = document.createElement('button');
-          button.textContent = option;
-          button.type = 'button';
-          button.classList.add(
-            'w-full',
-            'text-left',
-            'p-3',
-            'rounded-lg',
-            'transition-all',
-            'duration-200',
-            'bg-white/20',
-            'text-white',
-            'hover:bg-white/30'
-          );
-          button.onclick = (event) => handleAnswerSelect(option, event);
-          optionsContainer.appendChild(button);
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
         });
-        updateProgressBar();
-        nextQuestionBtn.disabled = true;
-        nextQuestionBtn.classList.add('bg-white/30', 'cursor-not-allowed');
-      }
-    }
 
-    function handleAnswerSelect(option, event) {
-      const letter = option.charAt(0).toUpperCase();
-      userAnswers[currentQuestionIndex] = letter;
-      nextQuestionBtn.disabled = false;
-      nextQuestionBtn.classList.remove('bg-white/30', 'cursor-not-allowed');
-      document.querySelectorAll('#options-container button').forEach((btn) => {
-        btn.classList.remove('bg-white', 'text-gray-900');
-      });
-      event.target.classList.add('bg-white', 'text-gray-900');
-    }
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
 
-    function goToNextQuestion() {
-      if (currentQuestionIndex < parsedMCQs.length - 1) {
-        currentQuestionIndex++;
-        loadCurrentQuestion();
-      } else {
-        const endTime = Date.now();
-        const totalTime = Math.floor((endTime - startTime) / 1000);
-        quizCompleted = true;
-        const score = calculateScore();
-        const result = {
-          name,
-          rollNo,
-          score: score.score,
-          total: score.total,
-          percentage: ((score.score / score.total) * 100).toFixed(1),
-          date: new Date().toLocaleString(),
-          timeTaken: totalTime
-        };
-        results[rollNo] = result;
-        localStorage.setItem('quizResults', JSON.stringify(results));
-        showResults();
-      }
-    }
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                handleFileUpload(files[0]);
+            }
+        });
 
-    function calculateScore() {
-      let score = 0;
-      parsedMCQs.forEach((mcq, index) => {
-        if (userAnswers[index] === mcq.answer.toUpperCase()) {
-          score++;
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFileUpload(e.target.files[0]);
+            }
+        });
+
+        function handleFileUpload(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const content = e.target.result;
+                parseMCQs(content);
+            };
+            reader.readAsText(file);
+            showToast('File uploaded successfully!');
         }
-      });
-      return { score, total: parsedMCQs.length };
-    }
 
-    function updateProgressBar() {
-      const progress = ((currentQuestionIndex + 1) / parsedMCQs.length) * 100;
-      progressBar.style.width = `${progress}%`;
-      questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${parsedMCQs.length}`;
-    }
+        function parseMCQs(content) {
+            const lines = content.trim().split('\n');
+            questions = [];
+            
+            lines.forEach((line, index) => {
+                const parts = line.trim().split('|');
+                if (parts.length === 6) {
+                    questions.push({
+                        id: index + 1,
+                        question: parts[0],
+                        options: [parts[1], parts[2], parts[3], parts[4]],
+                        correct: parts[5].toUpperCase(),
+                        userAnswer: null
+                    });
+                }
+            });
+            
+            showToast(`Parsed ${questions.length} questions successfully!`);
+        }
 
-    function showResults() {
-      step = 3;
-      toggleSteps();
-      const result = results[rollNo];
-      if (result) {
-        resultsContainer.classList.remove('hidden');
-        noResults.classList.add('hidden');
-        document.getElementById('result-name').textContent = result.name;
-        document.getElementById('result-rollno').textContent = result.rollNo;
-        document.getElementById('result-score').textContent = `${result.score}/${result.total}`;
-        document.getElementById('result-percentage').textContent = result.percentage;
-        document.getElementById('result-date').textContent = result.date;
-        document.getElementById('result-time-taken').textContent = result.timeTaken;
-      } else {
-        resultsContainer.classList.add('hidden');
-        noResults.classList.remove('hidden');
-      }
-    }
+        function parseQuestions() {
+            if (questions.length === 0) {
+                showToast('Please upload a file with questions first!', 'error');
+                return;
+            }
+            
+            document.getElementById('uploadSection').style.display = 'none';
+            document.getElementById('quizSection').style.display = 'block';
+            
+            startQuiz();
+        }
 
-    function goBackToHome() {
-      step = 0;
-      name = '';
-      rollNo = '';
-      parsedMCQs = [];
-      currentQuestionIndex = 0;
-      userAnswers = {};
-      quizCompleted = false;
-      mcqsText.value = '';
-      document.getElementById('name').value = '';
-      document.getElementById('rollNo').value = '';
-      validateContinueBtn();
-      validateStartQuizBtn();
-      toggleSteps();
-    }
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questions.length).fill(null);
+            flaggedQuestions = [];
+            startTime = Date.now();
+            
+            timerInterval = setInterval(updateTimer, 1000);
+            
+            displayQuestion();
+            updateProgress();
+        }
 
-    function downloadResults() {
-      const result = results[rollNo];
-      if (!result) {
-        alert('No results found for this roll number.');
-        return;
-      }
-      const content = `Name: ${result.name}
-Roll No: ${result.rollNo}
-Score: ${result.score}/${result.total}
-Percentage: ${result.percentage}%
-Date: ${result.date}
-Time Taken: ${result.timeTaken} seconds
-`;
-      const blob = new Blob([content], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `quiz_result_${rollNo}.txt`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
-    }
-  </script>
+        function displayQuestion() {
+            const question = questions[currentQuestionIndex];
+            const container = document.getElementById('questionContainer');
+            
+            container.innerHTML = `
+                <div class="question-card glass-card">
+                    <div class="question-number">Question ${currentQuestionIndex + 1}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options-container">
+                        ${question.options.map((option, index) => `
+                            <label class="option ${userAnswers[currentQuestionIndex] === String.fromCharCode(65 + index) ? 'selected' : ''}">
+                                <input type="radio" name="answer" value="${String.fromCharCode(65 + index)}">
+                                <div class="option-label">${String.fromCharCode(65 + index)}</div>
+                                <div>${option}</div>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const input = this.querySelector('input[type="radio"]');
+                    input.checked = true;
+                    userAnswers[currentQuestionIndex] = input.value;
+                    updateOptionStyles();
+                });
+            });
+            
+            updateNavigationButtons();
+        }
+
+        function updateOptionStyles() {
+            document.querySelectorAll('.option').forEach(option => {
+                const input = option.querySelector('input[type="radio"]');
+                if (input.checked) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            prevBtn.disabled = currentQuestionIndex === 0;
+            
+            if (currentQuestionIndex === questions.length - 1) {
+                nextBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+            }
+            
+            // Update flag button
+            const flagBtn = document.getElementById('flagBtn');
+            if (flaggedQuestions.includes(currentQuestionIndex)) {
+                flagBtn.innerHTML = '<i class="fas fa-flag"></i> Unflag';
+            } else {
+                flagBtn.innerHTML = '<i class="fas fa-flag"></i> Flag';
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+                updateProgress();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+                updateProgress();
+            }
+        }
+
+        function flagQuestion() {
+            const index = flaggedQuestions.indexOf(currentQuestionIndex);
+            if (index > -1) {
+                flaggedQuestions.splice(index, 1);
+            } else {
+                flaggedQuestions.push(currentQuestionIndex);
+            }
+            updateNavigationButtons();
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('questionCounter').textContent = 
+                `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+        }
+
+        function updateTimer() {
+            const elapsed = Date.now() - startTime;
+            const minutes = Math.floor(elapsed / 60000);
+            const seconds = Math.floor((elapsed % 60000) / 1000);
+            document.getElementById('timeElapsed').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            
+            // Calculate results
+            let correct = 0;
+            let incorrect = 0;
+            
+            questions.forEach((q, index) => {
+                q.userAnswer = userAnswers[index];
+                if (q.userAnswer === q.correct) {
+                    correct++;
+                } else if (q.userAnswer) {
+                    incorrect++;
+                }
+            });
+            
+            displayResults(correct, incorrect);
+        }
+
+        function displayResults(correct, incorrect) {
+            document.getElementById('quizSection').style.display = 'none';
+            document.getElementById('resultsSection').style.display = 'block';
+            
+            const score = Math.round((correct / questions.length) * 100);
+            const totalTime = document.getElementById('timeElapsed').textContent;
+            
+            // Update score display
+            document.getElementById('scoreText').textContent = `${score}%`;
+            document.getElementById('scoreRing').style.setProperty('--score-deg', `${(score / 100) * 360}deg`);
+            
+            // Update summary
+            document.getElementById('correctCount').textContent = correct;
+            document.getElementById('incorrectCount').textContent = incorrect;
+            document.getElementById('totalTime').textContent = totalTime;
+            
+            // Generate review
+            const reviewContainer = document.getElementById('reviewContainer');
+            reviewContainer.innerHTML = '';
+            
+            questions.forEach((q, index) => {
+                const isCorrect = q.userAnswer === q.correct;
+                const reviewItem = document.createElement('div');
+                reviewItem.className = 'review-item glass-card';
+                reviewItem.innerHTML = `
+                    <div class="review-question">Q${index + 1}: ${q.question}</div>
+                    <div class="review-answer">
+                        Your answer: <span class="${isCorrect ? 'review-correct' : 'review-incorrect'}">${q.userAnswer || 'Not answered'}</span>
+                        ${!isCorrect ? `<br>Correct answer: <span class="review-correct">${q.correct}</span>` : ''}
+                    </div>
+                `;
+                reviewContainer.appendChild(reviewItem);
+            });
+        }
+
+        function restartQuiz() {
+            document.getElementById('resultsSection').style.display = 'none';
+            document.getElementById('uploadSection').style.display = 'block';
+            questions = [];
+            userAnswers = [];
+            flaggedQuestions = [];
+            document.getElementById('fileInput').value = '';
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastMessage.textContent = message;
+            toast.style.background = type === 'error' ? 
+                'rgba(239, 68, 68, 0.9)' : 
+                'rgba(16, 185, 129, 0.9)';
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Demo functionality - load sample questions if no file uploaded
+        window.addEventListener('load', () => {
+            // Sample questions for demo
+            const sampleQuestions = [
+                "What is the capital of France?|London|Paris|Berlin|Madrid|B",
+                "Which planet is known as the Red Planet?|Venus|Mars|Jupiter|Saturn|B",
+                "What is 2 + 2?|3|4|5|6|B",
+                "Who painted the Mona Lisa?|Van Gogh|Picasso|Da Vinci|Michelangelo|C"
+            ];
+            
+            sampleQuestions.forEach((line, index) => {
+                const parts = line.split('|');
+                questions.push({
+                    id: index + 1,
+                    question: parts[0],
+                    options: [parts[1], parts[2], parts[3], parts[4]],
+                    correct: parts[5],
+                    userAnswer: null
+                });
+            });
+        });
+    </script>
 </body>
 </html>
