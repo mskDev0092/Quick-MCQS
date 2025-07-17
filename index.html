@@ -10,123 +10,83 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: Arial, sans-serif;
     }
-
-    .min-h-screen {
-      min-height: 100vh;
-    }
-
-    .bg-gradient-to-br {
-      background: linear-gradient(to bottom right, #1e293b, #374151, #4b5563);
-    }
-
-    .backdrop-blur-lg {
-      backdrop-filter: blur(10px);
-    }
-
-    .bg-white\/5 {
-      background-color: rgba(255, 255, 255, 0.05);
-    }
-
-    .text-white {
-      color: white;
-    }
-
-    .text-white\/70 {
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .text-white\/50 {
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .text-white\/30 {
-      color: rgba(255, 255, 255, 0.3);
-    }
-
-    .focus\:outline-none:focus {
-      outline: none;
-    }
-
-    .focus\:ring-2:focus {
-      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
-    }
-
-    .transition-all {
-      transition: all 0.3s ease-in-out;
-    }
-
-    .duration-300 {
-      transition-duration: 300ms;
-    }
-
-    .rounded-lg {
-      border-radius: 0.5rem;
-    }
-
-    .shadow-lg {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .flex {
-      display: flex;
-    }
-
-    .items-center {
-      align-items: center;
-    }
-
-    .justify-center {
-      justify-content: center;
-    }
-
-    .gap-4 {
-      gap: 1rem;
-    }
-
-    .p-6 {
-      padding: 1.5rem;
-    }
-
-    .space-y-6 > * + * {
-      margin-top: 1.5rem;
-    }
-
-    .w-full {
-      width: 100%;
-    }
-
-    .h-64 {
-      height: 16rem;
-    }
-
-    .text-3xl {
-      font-size: 1.875rem;
-      line-height: 2.25rem;
-    }
-
-    .font-bold {
-      font-weight: bold;
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .cursor-not-allowed {
-      cursor: not-allowed;
-    }
+    .min-h-screen { min-height: 100vh; }
+    .bg-gradient-to-br { background: linear-gradient(to bottom right, #1e293b, #374151, #4b5563); }
+    .backdrop-blur-lg { backdrop-filter: blur(10px); }
+    .bg-white\/5 { background-color: rgba(255, 255, 255, 0.05); }
+    .text-white { color: white; }
+    .text-white\/70 { color: rgba(255, 255, 255, 0.7); }
+    .text-white\/50 { color: rgba(255, 255, 255, 0.5); }
+    .text-white\/30 { color: rgba(255, 255, 255, 0.3); }
+    .focus\:outline-none:focus { outline: none; }
+    .focus\:ring-2:focus { box-shadow: 0 0 0 2px rgba(255,255,255,0.4); }
+    .transition-all { transition: all 0.3s ease-in-out; }
+    .duration-300 { transition-duration: 300ms; }
+    .rounded-lg { border-radius: 0.5rem; }
+    .rounded-2xl { border-radius: 1rem; }
+    .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
+    .shadow-2xl { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 8px 10px -6px rgba(0,0,0,0.1); }
+    .hidden { display: none; }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-4 { gap: 1rem; }
+    .p-4 { padding: 1rem; }
+    .p-6 { padding: 1.5rem; }
+    .space-y-6 > * + * { margin-top: 1.5rem; }
+    .w-full { width: 100%; }
+    .max-w-4xl { max-width: 64rem; }
+    .h-64 { height: 16rem; }
+    .w-16 { width: 4rem; }
+    .h-2 { height: 0.5rem; }
+    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .font-bold { font-weight: bold; }
+    .font-semibold { font-weight: 600; }
+    .text-center { text-align: center; }
+    .cursor-not-allowed { cursor: not-allowed; }
+    .hover\:bg-white\/90:hover { background-color: rgba(255,255,255,0.9); }
+    .hover\:bg-gray-600:hover { background-color: #4b5563; }
+    .hover\:bg-green-700:hover { background-color: #15803d; }
+    .hover\:bg-blue-700:hover { background-color: #1d4ed8; }
+    .bg-white { background-color: #fff; }
+    .bg-white\/10 { background-color: rgba(255,255,255,0.1); }
+    .bg-white\/20 { background-color: rgba(255,255,255,0.2); }
+    .bg-white\/30 { background-color: rgba(255,255,255,0.3); }
+    .bg-gray-900 { background-color: #111827; }
+    .bg-gray-700 { background-color: #374151; }
+    .bg-gray-800 { background-color: #1f2937; }
+    .bg-green-600 { background-color: #16a34a; }
+    .bg-blue-600 { background-color: #2563eb; }
+    .text-gray-900 { color: #111827; }
+    .font-mono { font-family: monospace; }
+    .opacity-50 { opacity: 0.5; }
+    .overflow-hidden { overflow: hidden; }
+    .border { border-width: 1px; border-style: solid; }
+    .border-white\/10 { border-color: rgba(255,255,255,0.1); }
+    .mt-4 { margin-top: 1rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .gap-4 { gap: 1rem; }
+    .transition-all { transition: all 0.3s; }
+    .duration-200 { transition-duration: 200ms; }
+    .duration-300 { transition-duration: 300ms; }
   </style>
 </head>
 <body>
-  <div id="app" class="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center p-4">
+  <div id="app" class="min-h-screen bg-gradient-to-br flex items-center justify-center p-4">
     <div class="w-full max-w-4xl backdrop-blur-lg bg-white/5 rounded-2xl shadow-2xl overflow-hidden border border-white/10">
       <div class="p-6 space-y-6">
         <!-- Step 0: Name & Roll -->
@@ -139,6 +99,7 @@
               type="text"
               class="w-full p-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/40 mb-4"
               placeholder="Enter your name"
+              autocomplete="off"
             />
             <label class="block text-white mb-2" for="rollNo">Roll Number</label>
             <input
@@ -146,9 +107,11 @@
               type="text"
               class="w-full p-3 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/40"
               placeholder="Enter your roll number"
+              autocomplete="off"
             />
             <button
               id="continue-btn"
+              type="button"
               class="mt-6 w-full py-3 font-semibold rounded-lg transition-all duration-300 bg-white/30 text-white cursor-not-allowed"
               disabled
             >
@@ -185,6 +148,7 @@
           </div>
           <button
             id="start-quiz-btn"
+            type="button"
             class="w-full py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-white/90 transition-all duration-300 shadow-lg opacity-50 cursor-not-allowed"
             disabled
           >
@@ -210,6 +174,7 @@
           </div>
           <button
             id="next-question-btn"
+            type="button"
             class="w-full py-3 rounded-lg font-semibold transition-all duration-300 bg-white/30 text-white cursor-not-allowed"
             disabled
           >
@@ -223,6 +188,7 @@
             <h2 class="text-2xl font-bold text-white">Your Results</h2>
             <button
               id="back-to-home-btn"
+              type="button"
               class="py-2 px-4 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-all duration-300"
             >
               Back
@@ -239,12 +205,14 @@
               <div class="flex justify-center gap-4 mt-4">
                 <button
                   id="download-results-btn"
+                  type="button"
                   class="py-2 px-6 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-all duration-300"
                 >
                   Download Results
                 </button>
                 <button
                   id="print-results-btn"
+                  type="button"
                   class="py-2 px-6 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-300"
                 >
                   Print Results
@@ -257,7 +225,7 @@
       </div>
     </div>
   </div>
-  <script>
+  <script defer>
     // DOM Elements
     const stepNameRoll = document.getElementById('step-name-roll');
     const stepMcqs = document.getElementById('step-mcqs');
@@ -278,7 +246,7 @@
     const downloadResultsBtn = document.getElementById('download-results-btn');
     const printResultsBtn = document.getElementById('print-results-btn');
 
-    let step = 0; // 0: name, 1: mcqs, 2: quiz, 3: results
+    let step = 0;
     let name = '';
     let rollNo = '';
     let parsedMCQs = [];
@@ -288,7 +256,6 @@
     let startTime = null;
     let results = JSON.parse(localStorage.getItem('quizResults')) || {};
 
-    // Event Listeners
     continueBtn.addEventListener('click', () => {
       name = document.getElementById('name').value.trim();
       rollNo = document.getElementById('rollNo').value.trim();
@@ -314,7 +281,6 @@
 
     printResultsBtn.addEventListener('click', () => window.print());
 
-    // Functions
     function validateContinueBtn() {
       const nameValue = document.getElementById('name').value.trim();
       const rollNoValue = document.getElementById('rollNo').value.trim();
@@ -336,7 +302,7 @@
         const reader = new FileReader();
         reader.onload = (event) => {
           mcqsText.value = event.target.result;
-          validateStartQuizBtn();
+          mcqsText.dispatchEvent(new Event('input'));
         };
         reader.readAsText(file);
       } else {
@@ -362,11 +328,11 @@
             options: [],
             answer: ''
           };
-        } else if (/^[A-D]\)/.test(line)) {
-          currentQuestion.options.push(line);
-        } else if (/^Answer:\s*[A-D]/i.test(line)) {
-          const match = line.match(/Answer:\s*([A-D])/i);
-          if (match) {
+        } else if (/^[A-Da-d]\)/.test(line)) {
+          if (currentQuestion) currentQuestion.options.push(line);
+        } else if (/^Answer:\s*[A-Da-d]/.test(line)) {
+          const match = line.match(/Answer:\s*([A-Da-d])/);
+          if (match && currentQuestion) {
             currentQuestion.answer = match[1].toUpperCase();
           }
         }
@@ -406,6 +372,7 @@
         question.options.forEach((option) => {
           const button = document.createElement('button');
           button.textContent = option;
+          button.type = 'button';
           button.classList.add(
             'w-full',
             'text-left',
@@ -417,7 +384,7 @@
             'text-white',
             'hover:bg-white/30'
           );
-          button.onclick = () => handleAnswerSelect(option);
+          button.onclick = (event) => handleAnswerSelect(option, event);
           optionsContainer.appendChild(button);
         });
         updateProgressBar();
@@ -426,7 +393,7 @@
       }
     }
 
-    function handleAnswerSelect(option) {
+    function handleAnswerSelect(option, event) {
       const letter = option.charAt(0).toUpperCase();
       userAnswers[currentQuestionIndex] = letter;
       nextQuestionBtn.disabled = false;
@@ -443,7 +410,7 @@
         loadCurrentQuestion();
       } else {
         const endTime = Date.now();
-        const totalTime = Math.floor((endTime - startTime) / 1000); // Time in seconds
+        const totalTime = Math.floor((endTime - startTime) / 1000);
         quizCompleted = true;
         const score = calculateScore();
         const result = {
@@ -518,14 +485,21 @@
         alert('No results found for this roll number.');
         return;
       }
-
-      const content = `Name: ${result.name}\nRoll No: ${result.rollNo}\nScore: ${result.score}/${result.total}\nPercentage: ${result.percentage}%\nDate: ${result.date}\nTime Taken: ${result.timeTaken} seconds`;
+      const content = `Name: ${result.name}
+Roll No: ${result.rollNo}
+Score: ${result.score}/${result.total}
+Percentage: ${result.percentage}%
+Date: ${result.date}
+Time Taken: ${result.timeTaken} seconds
+`;
       const blob = new Blob([content], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
       link.download = `quiz_result_${rollNo}.txt`;
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
       URL.revokeObjectURL(url);
     }
   </script>
