@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Quiz App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4f46e5;
+            --secondary: #7c3aed;
+            --accent: #06b6d4;
+            --background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text: #f8fafc;
+            --text-secondary: #94a3b8;
+            --success: #10b981;
+            --error: #ef4444;
+            --font-heading: 'Inter', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--background);
+            min-height: 100vh;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(79, 70, 229, 0.1);
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(4px);
+        }
+
+        .quiz-option.selected {
+            background: rgba(99, 102, 241, 0.3);
+            border-color: var(--primary);
+        }
+
+        .quiz-option.correct {
+            background: rgba(34, 197, 94, 0.3);
+            border-color: #22c55e;
+        }
+
+        .quiz-option.incorrect {
+            background: rgba(239, 68, 68, 0.3);
+            border-color: #ef4444;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 0.5rem;
+            width: fit-content;
+            margin: 0 auto 3rem;
+        }
+
+        .nav-tab {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .nav-tab.active {
+            background: rgba(79, 70, 229, 0.2);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--glass);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        th {
+            background: var(--glass);
+            font-weight: 600;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 2rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .glass-card {
+                padding: 1.5rem;
+            }
+            
+            .nav-tabs {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>QuizVerse</h1>
+            <p class="subtitle">Login once, keep your scores forever.  Solo or compatibility mode.</p>
+
+            <!-- SEARCH BAR -->
+            <div style="position:relative;max-width:400px;margin:1rem auto;">
+                <input type="search" id="searchInput" placeholder="Search quizzes..." style="border-radius:20px;padding-left:2.5rem;">
+                <svg style="position:absolute;left:.75rem;top:50%;transform:translateY(-50%);opacity:.6" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M21.53 20.47l-6.1-6.1a8.5 8.5 0 1 0-1.41 1.41l6.1 6.1a1 1 0 0 0 1.41-1.41z"/></svg>
+            </div>
+
+            <!-- FILTER CONTROLS -->
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:1rem 0;font-size:.85rem">
+                <select id="categoryFilter" onchange="filterQuizzes()">
+                    <option value="">All categories</option>
+                    <option value="math">Math</option>
+                    <option value="science">Science</option>
+                    <option value="gk">GK</option>
+                </select>
+                <input type="date" id="dateFrom" onchange="filterQuizzes()">
+                <input type="date" id="dateTo" onchange="filterQuizzes()">
+                <input type="number" id="scoreMin" placeholder="Min %" style="width:70px" onchange="filterQuizzes()">
+                <input type="number" id="scoreMax" placeholder="Max %" style="width:70px" onchange="filterQuizzes()">
+            </div>
+
+            <div class="hero-buttons">
+                <button class="btn btn-primary pulse" onclick="showSection('login')">Get Started</button>
+                <button class="btn btn-outline" onclick="toggleFeatures()">Explore Features</button>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number" id="totalQuizzes">0</div>
+                    <div class="stat-label">Quizzes Available</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="totalUsers">0</div>
+                    <div class="stat-label">Users</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="totalAttempts">0</div>
+                    <div class="stat-label">Attempts</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="showSection('login')">Login</div>
+            <div class="nav-tab" onclick="showSection('quizzes')">Quizzes</div>
+            <div class="nav-tab" onclick="showSection('upload')">Upload</div>
+            <div class="nav-tab" onclick="showSection('quiz')">Take Quiz</div>
+            <div class="nav-tab" onclick="showSection('compatibility')">Compatibility</div>
+            <div class="nav-tab" onclick="showSection('results')">Results</div>
+            <div class="nav-tab" onclick="showSection('leaderboard')">Leaderboard</div>
+            <div class="nav-tab" onclick="showSection('history')">History</div>
+        </div>
+
+        <div id="login" class="section active">
+            <div class="glass-card">
+                <h2>User Login</h2>
+                <p id="currentUser">No user logged in</p>
+                <form onsubmit="login(event)">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="text" id="rollNumber" placeholder="Roll Number" required>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <button onclick="switchUser()" class="btn" style="margin-top: 1rem;">Switch User</button>
+            </div>
+        </div>
+
+        <div id="quizzes" class="section">
+            <div class="glass-card">
+                <h2>Available Quizzes</h2>
+                <div id="quizList" class="grid"></div>
+            </div>
+        </div>
+
+        <div id="upload" class="section">
+            <div class="glass-card">
+                <h2>Upload Custom MCQs</h2>
+                <input type="file" id="fileUpload" accept=".txt,.csv" onchange="handleFileUpload(event)">
+                <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                    Upload .txt or .csv files with questions. Max 100 questions, 1MB size.
+                </p>
+            </div>
+        </div>
+
+        <div id="quiz" class="section">
+            <div class="glass-card">
+                <h2 id="quizTitle">Quiz</h2>
+                <div id="quizContent">
+                    <div id="questionContainer"></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                        <button class="btn" onclick="previousQuestion()">Previous</button>
+                        <button class="btn" onclick="nextQuestion()">Next</button>
+                        <button class="btn btn-primary" onclick="submitQuiz()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="compatibility" class="section">
+            <div class="glass-card">
+                <h2>Compatibility Test</h2>
+                <form onsubmit="startCompatibility(event)">
+                    <input type="text" id="user1" placeholder="Your Name" required>
+                    <input type="text" id="user2" placeholder="Partner's Name" required>
+                    <button type="submit" class="btn btn-primary">Start Test</button>
+                </form>
+                <div id="compatibilityResults" style="margin-top: 2rem;"></div>
+            </div>
+        </div>
+
+        <div id="results" class="section">
+            <div class="glass-card">
+                <h2>Quiz Results</h2>
+                <div id="resultsContent"></div>
+                <button class="btn" onclick="downloadReport()">Download Report</button>
+            </div>
+        </div>
+
+        <div id="leaderboard" class="section">
+            <div class="glass-card">
+                <h2>Leaderboard</h2>
+                <div id="leaderboardContent" class="leaderboard-table"></div>
+            </div>
+        </div>
+
+        <div id="history" class="section">
+            <div class="glass-card">
+                <h2>Quiz History</h2>
+                <div id="historyContent"></div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h3 onclick="toggleFeatures()" style="cursor: pointer;">Features ▼</h3>
+            <div id="features" style="display: none; margin-top: 1rem;">
+                <ul style="list-style: none; padding: 0;">
+                    <li>👤 Login & User Management</li>
+                    <li>📚 Predefined + Custom Quizzes</li>
+                    <li>📄 Accepts CSV and TXT format</li>
+                    <li>🧪 Solo + Compatibility Test Mode</li>
+                    <li>🧾 Report Card with Download</li>
+                    <li>🧠 Progress Tracking & Quiz History</li>
+                    <li>🏆 Leaderboard</li>
+                    <li>⏱ Timer & Randomization</li>
+                    <li>🔍 Quiz Search and Filter</li>
+                    <li>📱 Mobile-Responsive Design</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Global variables
+        let currentUser = null;
+        let currentQuiz = null;
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let quizStartTime = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUser();
+            loadQuizzes();
+            loadLeaderboard();
+            loadHistory();
+            initStatsCounter();
+        });
+
+        function initStatsCounter() {
+            const history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+            const users = new Set(history.map(h => h.user.username));
+            
+            // Animate counting up
+            animateValue('totalQuizzes', 0, Object.keys(predefinedQuizzes).length, 1000);
+            animateValue('totalUsers', 0, users.size, 1000);
+            animateValue('totalAttempts', 0, history.length, 1000);
+        }
+
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // User management
+        function login(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const rollNumber = document.getElementById('rollNumber').value;
+            
+            currentUser = { username, rollNumber };
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            updateUserDisplay();
+            showToast('Logged in successfully!');
+            showSection('quizzes');
+        }
+
+        function loadUser() {
+            const stored = localStorage.getItem('currentUser');
+            if (stored) {
+                currentUser = JSON.parse(stored);
+                updateUserDisplay();
+            }
+        }
+
+        function updateUserDisplay() {
+            if (currentUser) {
+                document.getElementById('currentUser').textContent = 
+                    `Current User: ${currentUser.username} (${currentUser.rollNumber})`;
+            }
+        }
+
+        function switchUser() {
+            if (confirm('Switching users will clear current progress. Continue?')) {
+                localStorage.removeItem('currentUser');
+                currentUser = null;
+                document.getElementById('currentUser').textContent = 'No user logged in';
+                document.getElementById('username').value = '';
+                document.getElementById('rollNumber').value = '';
+                showSection('login');
+            }
+        }
+
+        // Section navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Quizzes
+        const predefinedQuizzes = {
+            math: {
+                title: 'Mathematics',
+                questions: [
+                    {
+                        question: 'What is 2 + 2?',
+                        options: ['3', '4', '5', '6'],
+                        answer: 1
+                    },
+                    {
+                        question: 'What is the square root of 16?',
+                        options: ['2', '3', '4', '5'],
+                        answer: 2
+                    }
+                ]
+            },
+            science: {
+                title: 'Science',
+                questions: [
+                    {
+                        question: 'What is H2O?',
+                        options: ['Water', 'Oxygen', 'Hydrogen', 'Salt'],
+                        answer: 0
+                    }
+                ]
+            }
+        };
+
+        function loadQuizzes() {
+            const quizList = document.getElementById('quizList');
+            let html = '';
+            
+            Object.keys(predefinedQuizzes).forEach(key => {
+                html += `
+                    <div class="glass-card">
+                        <h3>${predefinedQuizzes[key].title}</h3>
+                        <p>${predefinedQuizzes[key].questions.length} questions</p>
+                        <button class="btn btn-primary" onclick="startQuiz('${key}')">Start Quiz</button>
+                    </div>
+                `;
+            });
+            
+            quizList.innerHTML = html;
+        }
+
+        function startQuiz(quizId) {
+            if (!currentUser) {
+                showToast('Please login first!');
+                showSection('login');
+                return;
+            }
+            
+            currentQuiz = predefinedQuizzes[quizId];
+            currentQuestionIndex = 0;
+            userAnswers = new Array(currentQuiz.questions.length).fill(null);
+            quizStartTime = Date.now();
+            
+            document.getElementById('quizTitle').textContent = currentQuiz.title;
+            showQuestion();
+            showSection('quiz');
+        }
+
+        function showQuestion() {
+            const question = currentQuiz.questions[currentQuestionIndex];
+            const container = document.getElementById('questionContainer');
+            
+            let html = `
+                <h3>Question ${currentQuestionIndex + 1} of ${currentQuiz.questions.length}</h3>
+                <p style="font-size: 1.2rem; margin: 1rem 0;">${question.question}</p>
+            `;
+            
+            question.options.forEach((option, index) => {
+                html += `
+                    <label class="quiz-option ${userAnswers[currentQuestionIndex] === index ? 'selected' : ''}">
+                        <input type="radio" name="answer" value="${index}" 
+                               ${userAnswers[currentQuestionIndex] === index ? 'checked' : ''}
+                               onchange="selectAnswer(${index})">
+                        ${option}
+                    </label>
+                `;
+            });
+            
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function selectAnswer(index) {
+            userAnswers[currentQuestionIndex] = index;
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / currentQuiz.questions.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < currentQuiz.questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+            }
+        }
+
+        function submitQuiz() {
+            const score = calculateScore();
+            const timeTaken = Date.now() - quizStartTime;
+            
+            const result = {
+                user: currentUser,
+                quiz: currentQuiz.title,
+                score: score,
+                total: currentQuiz.questions.length,
+                percentage: (score / currentQuiz.questions.length) * 100,
+                date: new Date().toISOString(),
+                timeTaken: timeTaken,
+                answers: userAnswers
+            };
+            
+            saveResult(result);
+            showResults(result);
+        }
+
+        function calculateScore() {
+            let score = 0;
+            currentQuiz.questions.forEach((q, i) => {
+                if (userAnswers[i] === q.answer) score++;
+            });
+            return score;
+        }
+
+        function saveResult(result) {
+            let history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+            history.push(result);
+            localStorage.setItem('quizHistory', JSON.stringify(history));
+        }
+
+        function showResults(result) {
+            const container = document.getElementById('resultsContent');
+            container.innerHTML = `
+                <h3>${result.quiz}</h3>
+                <p>Score: ${result.score}/${result.total} (${result.percentage.toFixed(1)}%)</p>
+                <p>Time: ${Math.floor(result.timeTaken / 1000)}s</p>
+                <p>Date: ${new Date(result.date).toLocaleDateString()}</p>
+            `;
+            
+            showSection('results');
+            loadLeaderboard();
+            loadHistory();
+        }
+
+        // File upload
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const content = e.target.result;
+                    parseAndStoreQuestions(content, file.name);
+                } catch (error) {
+                    showToast('Error parsing file');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function parseAndStoreQuestions(content, filename) {
+            const questions = [];
+            const lines = content.split('\n').map(l => l.trim()).filter(l => l);
+            
+            let currentQuestion = null;
+            for (const line of lines) {
+                if (line.startsWith('Category:')) {
+                    // Handle category
+                } else if (line.startsWith('Q:')) {
+                    currentQuestion = {
+                        question: line.substring(2).trim(),
+                        options: [],
+                        answer: null
+                    };
+                } else if (line.startsWith('A)')) {
+                    currentQuestion.options.push(line.substring(2).trim());
+                } else if (line.startsWith('B)')) {
+                    currentQuestion.options.push(line.substring(2).trim());
+                } else if (line.startsWith('C)')) {
+                    currentQuestion.options.push(line.substring(2).trim());
+                } else if (line.startsWith('D)')) {
+                    currentQuestion.options.push(line.substring(2).trim());
+                } else if (line.startsWith('Answer:')) {
+                    const answer = line.substring(7).trim();
+                    currentQuestion.answer = 'ABCD'.indexOf(answer);
+                    questions.push(currentQuestion);
+                }
+            }
+            
+            // Add to predefined quizzes
+            const key = filename.replace(/[^a-zA-Z]/g, '').toLowerCase();
+            predefinedQuizzes[key] = {
+                title: filename.replace(/\.[^/.]+$/, ""),
+                questions: questions
+            };
+            
+            loadQuizzes();
+            showToast('Quiz uploaded successfully!');
+        }
+
+        // Compatibility test
+        function startCompatibility(event) {
+            event.preventDefault();
+            const user1 = document.getElementById('user1').value;
+            const user2 = document.getElementById('user2').value;
+            
+            // Simple compatibility calculation
+            const compatibility = Math.floor(Math.random() * 100);
+            document.getElementById('compatibilityResults').innerHTML = `
+                <h3>Compatibility Results</h3>
+                <p style="font-size: 2rem; color: var(--accent);">${compatibility}%</p>
+                <p>${user1} and ${user2} are ${compatibility}% compatible!</p>
+            `;
+            
+            // Save compatibility result
+            const result = {
+                user1,
+                user2,
+                compatibility,
+                date: new Date().toISOString()
+            };
+            
+            let compHistory = JSON.parse(localStorage.getItem('compatibilityHistory') || '[]');
+            compHistory.push(result);
+            localStorage.setItem('compatibilityHistory', JSON.stringify(compHistory));
+        }
+
+        // Leaderboard
+        function loadLeaderboard() {
+            const history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+            const userStats = {};
+            
+            history.forEach(result => {
+                const key = result.user.username;
+                if (!userStats[key]) {
+                    userStats[key] = {
+                        username: result.user.username,
+                        quizzes: 0,
+                        totalScore: 0,
+                        bestScore: 0
+                    };
+                }
+                
+                userStats[key].quizzes++;
+                userStats[key].totalScore += result.percentage;
+                userStats[key].bestScore = Math.max(userStats[key].bestScore, result.percentage);
+            });
+            
+            const leaderboard = Object.values(userStats).sort((a, b) => b.bestScore - a.bestScore);
+            
+            let html = '<table><tr><th>Rank</th><th>User</th><th>Quizzes</th><th>Avg Score</th><th>Best Score</th></tr>';
+            leaderboard.forEach((user, index) => {
+                html += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${user.username}</td>
+                        <td>${user.quizzes}</td>
+                        <td>${(user.totalScore / user.quizzes).toFixed(1)}%</td>
+                        <td>${user.bestScore.toFixed(1)}%</td>
+                    </tr>
+                `;
+            });
+            html += '</table>';
+            
+            document.getElementById('leaderboardContent').innerHTML = html;
+        }
+
+        // History
+        function loadHistory() {
+            const history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+            const userHistory = history.filter(h => currentUser && h.user.username === currentUser.username);
+            
+            let html = '<table><tr><th>Quiz</th><th>Score</th><th>Date</th><th>Time</th></tr>';
+            userHistory.forEach(h => {
+                html += `
+                    <tr>
+                        <td>${h.quiz}</td>
+                        <td>${h.percentage.toFixed(1)}%</td>
+                        <td>${new Date(h.date).toLocaleDateString()}</td>
+                        <td>${Math.floor(h.timeTaken / 1000)}s</td>
+                    </tr>
+                `;
+            });
+            html += '</table>';
+            
+            document.getElementById('historyContent').innerHTML = html || '<p>No history found</p>';
+        }
+
+        // Download report
+        function downloadReport() {
+            const history = JSON.parse(localStorage.getItem('quizHistory') || '[]');
+            const lastResult = history[history.length - 1];
+            
+            if (!lastResult) return;
+            
+            const content = `
+                Quiz Report
+                ------------
+                User: ${lastResult.user.username} (${lastResult.user.rollNumber})
+                Quiz: ${lastResult.quiz}
+                Score: ${lastResult.score}/${lastResult.total} (${lastResult.percentage.toFixed(1)}%)
+                Date: ${new Date(lastResult.date).toLocaleString()}
+                Time Taken: ${Math.floor(lastResult.timeTaken / 1000)}s
+            `;
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'quiz-report.txt';
+            a.click();
+        }
+
+        // Toast notifications
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Toggle features
+        function toggleFeatures() {
+            const features = document.getElementById('features');
+            features.style.display = features.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
