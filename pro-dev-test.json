@@ -42,15 +42,15 @@
       "correct": 1
     },
     {
-      "question": "How do you link an external JS file in HTML?",
-      "options": [
-        "<script src=\"script.js\"></script>",
-        "<js include=\"script.js\"></js>",
-        "<please-run src=\"script.js\"></please-run>",
-        "Just pray it works"
-      ],
-      "correct": 0
-    },
+  "question": "How do you link an external JS file in HTML?",
+  "options": [
+    "&lt;script src=\"script.js\"&gt;&lt;/script&gt;",
+    "&lt;js include=\"script.js\"&gt;&lt;/js&gt;",
+    "&lt;please-run src=\"script.js\"&gt;&lt;/please-run&gt;",
+    "Just pray it works"
+  ],
+  "correct": 0
+},
     {
       "question": "Which CSS property turns text red?",
       "options": [
