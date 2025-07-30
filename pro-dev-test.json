@@ -1,0 +1,1005 @@
+{
+  "title": "Specialized Full Stack Development Quiz",
+  "questions": [
+    {
+      "question": "What’s the main job of React.js?",
+      "options": [
+        "Styling your app like a fashion guru",
+        "Building snappy user interfaces",
+        "Managing your server’s mood swings",
+        "Wrestling with databases"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which hook keeps state in check for React functional components?",
+      "options": [
+        "useEffect (for side effects, duh)",
+        "useReducer (sounds fancy, right?)",
+        "useState (boring but useful)",
+        "useMagic (who doesn’t want that?)"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "What does Next.js bring to the React party?",
+      "options": [
+        "Server-side rendering and more",
+        "Just a prettier face",
+        "A secret handshake",
+        "Extra coffee for developers"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How does Tailwind CSS stand out from old-school CSS frameworks?",
+      "options": [
+        "It’s only for hipsters",
+        "It throws utility classes at you",
+        "It’s secretly Bootstrap in disguise",
+        "It deletes your CSS files for fun"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "How do you link an external JS file in HTML?",
+      "options": [
+        "<script src=\"script.js\"></script>",
+        "<js include=\"script.js\"></js>",
+        "<please-run src=\"script.js\"></please-run>",
+        "Just pray it works"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which CSS property turns text red?",
+      "options": [
+        "text-paint",
+        "color",
+        "font-color (sounds legit, right?)",
+        "red-text-now"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Why does the <img> tag need an alt attribute?",
+      "options": [
+        "To whisper secrets to screen readers",
+        "To make images load faster",
+        "To confuse developers",
+        "To decorate the code"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which tag creates a clickable link in HTML?",
+      "options": [
+        "<link> (seems logical)",
+        "<href> (sounds hyperlink-ish)",
+        "<a> (short and sweet)",
+        "<clickme>"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "What’s the difference between <div> and <span>?",
+      "options": [
+        "<div> blocks, <span> sneaks inline",
+        "<div> is for divas, <span> is for fans",
+        "They’re twins, no difference",
+        "<span> is just <div> with attitude"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you grab an element by ID in JavaScript?",
+      "options": [
+        "querySelector (fancy but broad)",
+        "getElementById (old reliable)",
+        "findMeByIdPlease",
+        "grabElement (sounds aggressive)"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s Node.js best at?",
+      "options": [
+        "Making coffee for the frontend",
+        "Running backend like a champ",
+        "Designing pretty buttons",
+        "Debugging your life choices"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which Node.js module spins up a server?",
+      "options": [
+        "fs (file stuff, maybe?)",
+        "http (sounds server-y)",
+        "url (for links, right?)",
+        "serverMagic"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s Express.js in a nutshell?",
+      "options": [
+        "A backend framework to save your soul",
+        "A database for your secrets",
+        "A frontend party trick",
+        "A test runner in disguise"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What does middleware do in Express.js?",
+      "options": [
+        "Plays middleman with requests",
+        "Cooks dinner for the server",
+        "Manages your app’s emotions",
+        "Writes SQL queries"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you set a route in Express.js?",
+      "options": [
+        "app.route(‘/lost’)",
+        "app.get(‘/here’, callback)",
+        "app.find(‘/path’)",
+        "app.wander(‘/where’)"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "RESTful APIs vs. GraphQL: what’s the big diff?",
+      "options": [
+        "REST loves HTTP, GraphQL loves queries",
+        "REST is old school, GraphQL is hip",
+        "No difference, just buzzwords",
+        "GraphQL dances better"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which HTTP method grabs data?",
+      "options": [
+        "POST (pushy, huh?)",
+        "DELETE (gone in a flash)",
+        "GET (gimme that)",
+        "PUT (place it here)"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "What’s CORS all about in backend land?",
+      "options": [
+        "Sharing cookies across origins",
+        "Cross-origin chaos management",
+        "A fancy database trick",
+        "Server hairstyle protocol"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "How do you hook up MongoDB in Node.js?",
+      "options": [
+        "With a mysql hug",
+        "Using the mongodb module",
+        "With a sqlite wink",
+        "By begging politely"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s Mongoose’s deal with MongoDB?",
+      "options": [
+        "Adds schema spice to the mix",
+        "Speeds up queries with magic",
+        "Deletes your data for fun",
+        "Makes SQL jealous"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What flavor is MongoDB?",
+      "options": [
+        "NoSQL (flexible and wild)",
+        "Relational (neat and tidy)",
+        "Graph (all connected)",
+        "SQL with a twist"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s a primary key in a relational DB?",
+      "options": [
+        "The VIP of unique IDs",
+        "A foreign invader",
+        "Just another column",
+        "A secret password"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s database normalization?",
+      "options": [
+        "Making data less messy",
+        "Adding chaos for fun",
+        "Speeding up crashes",
+        "Deleting duplicates manually"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which SQL command fetches data?",
+      "options": [
+        "INSERT (stuff it in)",
+        "SELECT (pick it out)",
+        "DELETE (bye-bye)",
+        "UPDATE (tweak it)"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s an index in a database?",
+      "options": [
+        "A cheat code for fast queries",
+        "A table’s autobiography",
+        "A slow-down trick",
+        "A fancy constraint"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "SQL vs. NoSQL: what’s the vibe?",
+      "options": [
+        "SQL is rigid, NoSQL is chill",
+        "SQL is slow, NoSQL is fast",
+        "NoSQL is just SQL misspelled",
+        "They’re secretly the same"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s a foreign key?",
+      "options": [
+        "A key from another planet",
+        "A link to another table’s VIP",
+        "A unique snowflake",
+        "A database lock"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "How do you join tables in SQL?",
+      "options": [
+        "With a JOIN handshake",
+        "With a WHERE wink",
+        "With a FROM hug",
+        "With a SELECT high-five"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s a database transaction?",
+      "options": [
+        "A solo operation",
+        "A group hug of operations",
+        "A table lock party",
+        "A data sale"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s sharding in MongoDB?",
+      "options": [
+        "Chopping data into bite-sized bits",
+        "Encrypting it for spies",
+        "Backing it up daily",
+        "Sharing it with friends"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s Docker’s superpower?",
+      "options": [
+        "Virtual machine wizardry",
+        "Containerizing chaos",
+        "Database juggling",
+        "Deployment dance moves"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s the point of CI/CD?",
+      "options": [
+        "Automating tests and deploys",
+        "Counting code lines",
+        "Server babysitting",
+        "Developer therapy"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How does Git save your bacon?",
+      "options": [
+        "Tracks code changes like a pro",
+        "Fixes bugs magically",
+        "Deploys apps overnight",
+        "Makes coffee"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s a GitHub pull request?",
+      "options": [
+        "Begging to merge code",
+        "Downloading someone’s repo",
+        "Filing a complaint",
+        "A code high-five"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Git vs. GitHub: what’s the deal?",
+      "options": [
+        "Git tracks, GitHub hosts",
+        "Git’s free, GitHub’s pricey",
+        "GitHub’s cooler, that’s it",
+        "They’re the same thing"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s a Docker image?",
+      "options": [
+        "A container’s selfie",
+        "A virtual server clone",
+        "A deployment script",
+        "A fancy logo"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you cook a Docker image?",
+      "options": [
+        "docker run (start it up)",
+        "docker build (bake it fresh)",
+        "docker fry (sounds tasty)",
+        "docker boil (too hot!)"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s a Docker container?",
+      "options": [
+        "A lightweight app box",
+        "A heavy virtual machine",
+        "A resource hog",
+        "A server’s pet"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s a Dockerfile for?",
+      "options": [
+        "Setting up container vibes",
+        "Running wild containers",
+        "Networking magic",
+        "Volume control"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you share a Docker image?",
+      "options": [
+        "docker push (to the cloud!)",
+        "docker email (send it over)",
+        "docker whisper (keep it secret)",
+        "docker shout (yell it out)"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s Jest’s gig?",
+      "options": [
+        "Testing everything, all the time",
+        "Just unit testing, chill",
+        "UI design critiques",
+        "Server monitoring"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s a unit test?",
+      "options": [
+        "Testing tiny code bits",
+        "Testing the whole app",
+        "Testing your patience",
+        "Testing the internet"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you fake a function in Jest?",
+      "options": [
+        "jest.fn() (mock it up)",
+        "fakeItTilYouMakeIt()",
+        "jest.lie() (sneaky)",
+        "mockMePlease()"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s integration testing about?",
+      "options": [
+        "Seeing if parts play nice",
+        "Testing solo units",
+        "Clicking buttons for fun",
+        "Speed trials"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you kick off Jest tests?",
+      "options": [
+        "jest (keep it simple)",
+        "jest run-tests-now",
+        "jest please-test",
+        "jest go-go-go"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s code coverage?",
+      "options": [
+        "How much code you’ve tested",
+        "How fast your tests run",
+        "How many bugs you’ve caught",
+        "How cool your code looks"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you check equality in Jest?",
+      "options": [
+        "expect(a).toMatch(b)",
+        "expect(a).toBe(b)",
+        "hope(a == b)",
+        "pray(a === b)"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s a snapshot test in Jest?",
+      "options": [
+        "Checking UI visuals",
+        "Timing your app",
+        "Querying databases",
+        "Testing APIs"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Why bother with testing?",
+      "options": [
+        "Catch bugs before they bite",
+        "Keep code quality high",
+        "Impress your boss",
+        "a and b, not c"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "What’s TDD stand for?",
+      "options": [
+        "Totally Done Development",
+        "Test-Driven Development",
+        "Tired Developer Disorder",
+        "Technical Debt Dance"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s Redux’s role?",
+      "options": [
+        "Bossing app state around",
+        "Fetching data secretly",
+        "Styling your components",
+        "Routing your life"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s the Context API in React?",
+      "options": [
+        "A data-passing ninja",
+        "A full-blown state manager",
+        "A routing guru",
+        "A testing spy"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you whip up a Redux store?",
+      "options": [
+        "new Store() (sounds classy)",
+        "createStore() (plain and simple)",
+        "storePlease()",
+        "buildStoreNow()"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s a reducer in Redux?",
+      "options": [
+        "A state-tweaking function",
+        "A UI painter",
+        "A middleware meddler",
+        "An action prankster"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you fire an action in Redux?",
+      "options": [
+        "action.launch()",
+        "store.dispatch(action)",
+        "dispatchPlease(action)",
+        "shootAction(action)"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s useContext for in React?",
+      "options": [
+        "Grabbing context goodies",
+        "Making new contexts",
+        "Managing state overload",
+        "Handling side effects"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you serve up context in React?",
+      "options": [
+        "<Context.Provider> (sharing is caring)",
+        "useContext (grabbing it)",
+        "createContext (making it)",
+        "Context.ServeUp"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Local state vs. global state: what’s up?",
+      "options": [
+        "Local’s small, global’s app-wide",
+        "Local’s quick, global’s sluggish",
+        "They’re the same, just kidding",
+        "Global’s outdated"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Why pick Redux over Context API?",
+      "options": [
+        "For simple apps, obviously",
+        "For complex state tangles",
+        "Because it’s faster",
+        "Because it’s trendier"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s a side effect in state management?",
+      "options": [
+        "A coding oopsie",
+        "Messing with the outside world",
+        "A sneaky bug",
+        "A performance hiccup"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s Axios’s claim to fame?",
+      "options": [
+        "HTTP request maestro",
+        "State management wizard",
+        "Component renderer",
+        "Event juggler"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you GET stuff with Fetch API?",
+      "options": [
+        "get(url) (simple, right?)",
+        "fetch(url) (the real deal)",
+        "request(url) (sounds official)",
+        "grab(url)"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Axios vs. Fetch: what’s the scoop?",
+      "options": [
+        "Axios has interceptors, Fetch doesn’t",
+        "Fetch is cooler, that’s all",
+        "Axios is for pros, Fetch is for newbies",
+        "They’re identical twins"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you catch Axios errors?",
+      "options": [
+        "try-catch (classic move)",
+        ".catch() (promise style)",
+        "hopeForTheBest()",
+        "a and b, because why not?"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Why use async/await for fetching?",
+      "options": [
+        "To confuse everyone",
+        "To tame promises nicely",
+        "To make requests faster",
+        "To look smart"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "How do you POST with Fetch?",
+      "options": [
+        "body option (pack it in)",
+        "data option (sounds right)",
+        "payload option (fancy term)",
+        "send option (logical, no?)"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s a JavaScript promise?",
+      "options": [
+        "A pinky swear from code",
+        "A maybe-done-later thing",
+        "A fast operation",
+        "A function type"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "How do you chain promises?",
+      "options": [
+        ".then() (keep it going)",
+        ".chain() (sounds cool)",
+        ".next() (logical guess)",
+        ".link()"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s the deal with HTTP headers?",
+      "options": [
+        "They’re request gossip",
+        "They send the main data",
+        "They receive replies",
+        "They lock the server"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you slap headers on Axios?",
+      "options": [
+        "headers option (easy peasy)",
+        "addHeaders() (sounds active)",
+        "setHeadersNow()",
+        "headersPlease()"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s an LLM?",
+      "options": [
+        "Loud Learning Machine",
+        "Large Language Model",
+        "Little Lazy Model",
+        "Long List Maker"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "How do you plug LLMs into web apps?",
+      "options": [
+        "With APIs, plugins, and more",
+        "By wishing really hard",
+        "With a USB cable",
+        "By shouting at the server"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Why use LLMs in apps?",
+      "options": [
+        "To chat, write, and translate",
+        "To crash the server",
+        "To confuse users",
+        "To waste time"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which API is LLM central?",
+      "options": [
+        "Firebase (hot stuff)",
+        "OpenAI API (wordsmith)",
+        "AWS Lambda (cloudy)",
+        "Google Translate (close, but no)"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s prompt engineering?",
+      "options": [
+        "Crafting clever LLM questions",
+        "Building bridges",
+        "Writing buggy code",
+        "Managing prompts"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you keep API keys safe?",
+      "options": [
+        "Hardcode them for all to see",
+        "Hide them in env vars",
+        "Tweet them out",
+        "Forget they exist"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s fine-tuning an LLM?",
+      "options": [
+        "Tweaking it with special data",
+        "Making it smaller",
+        "Speeding it up",
+        "Breaking it gently"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Why care about API rate limits?",
+      "options": [
+        "To avoid jail time",
+        "To save cash and stay alive",
+        "To look professional",
+        "b and c, not a"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "GPT-3 vs. GPT-4: what’s new?",
+      "options": [
+        "GPT-4’s smarter and shinier",
+        "GPT-3 draws, GPT-4 sings",
+        "They’re the same old thing",
+        "GPT-4’s free for all"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you judge an LLM’s skills?",
+      "options": [
+        "With BLEU or ROUGE scores",
+        "By asking your mom",
+        "By counting words",
+        "By its ego size"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s Agile all about?",
+      "options": [
+        "A stiff waterfall rival",
+        "A bendy project approach",
+        "A coding language",
+        "A deployment trick"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s Scrum?",
+      "options": [
+        "An Agile sidekick",
+        "A rugby move",
+        "A database type",
+        "A test framework"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s a sprint in Scrum?",
+      "options": [
+        "A quick time-boxed dash",
+        "A marathon goal",
+        "A coffee break",
+        "A code review"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What does a Scrum Master do?",
+      "options": [
+        "Codes the hard stuff",
+        "Keeps the process flowing",
+        "Designs the UI",
+        "Manages the server"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "How do you size up Agile tasks?",
+      "options": [
+        "With story points (fuzzy math)",
+        "With hours (tick-tock)",
+        "With wild guesses",
+        "With a ruler"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s a product backlog?",
+      "options": [
+        "A bug graveyard",
+        "A feature wish list",
+        "A done-deal list",
+        "A team roster"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Why do daily stand-ups?",
+      "options": [
+        "To chat progress and roadblocks",
+        "To assign homework",
+        "To debug live",
+        "To plan vacations"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How do you track Scrum velocity?",
+      "options": [
+        "By story points finished",
+        "By bug squashes",
+        "By commit counts",
+        "By meeting minutes"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s an Agile retrospective?",
+      "options": [
+        "A sprint reflection party",
+        "A planning marathon",
+        "A stakeholder show-off",
+        "A code roast"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Why’s communication key in projects?",
+      "options": [
+        "Keeps everyone synced",
+        "Stops epic mix-ups",
+        "Boosts team vibes",
+        "All of the above"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "What’s authentication?",
+      "options": [
+        "Checking who’s knocking",
+        "Letting everyone in",
+        "Encrypting secrets",
+        "Spying on users"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s authorization?",
+      "options": [
+        "ID check at the door",
+        "Handing out access keys",
+        "Locking the server",
+        "Tracking clicks"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s OWASP?",
+      "options": [
+        "A security superhero group",
+        "A coding language",
+        "A database tool",
+        "A web design trend"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s SQL injection?",
+      "options": [
+        "A database booster shot",
+        "A sneaky security hole",
+        "A coding shortcut",
+        "A server upgrade"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "How do you stop XSS attacks?",
+      "options": [
+        "By sanitizing user junk",
+        "By adding more scripts",
+        "By praying daily",
+        "By using HTTP only"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What’s HTTPS?",
+      "options": [
+        "HTTP’s secure sibling",
+        "A server type",
+        "A coding style",
+        "A database trick"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Why update software?",
+      "options": [
+        "To patch security holes",
+        "To snag new toys",
+        "To keep it speedy",
+        "All of the above"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "What’s two-factor authentication?",
+      "options": [
+        "Two passwords, twice the fun",
+        "Password plus a bonus step",
+        "Logging in twice daily",
+        "Sharing logins"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "How do you lock down API keys?",
+      "options": [
+        "Hardcode them for all to see",
+        "Hide them in env vars",
+        "Tweet them out",
+        "Forget they exist"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "What’s the principle of least privilege?",
+      "options": [
+        "Give just enough access",
+        "Make everyone admin",
+        "Ban all users",
+        "Watch everyone closely"
+      ],
+      "correct": 0
+    }
+  ]
+}
