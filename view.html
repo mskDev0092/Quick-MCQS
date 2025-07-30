@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>GlassQuiz - Premium MCQ Testing Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary-bg: rgba(255, 255, 255, 0.1);
+            --secondary-bg: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --accent-color: #f472b6;
+            --success-color: #34d399;
+            --error-color: #f87171;
+            --warning-color: #fbbf24;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            --gradient-4: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --backdrop: blur(20px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--gradient-3);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 154, 158, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(254, 207, 239, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(168, 237, 234, 0.2) 0%, transparent 50%);
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .glass-card {
+            background: var(--primary-bg);
+            backdrop-filter: var(--backdrop);
+            -webkit-backdrop-filter: var(--backdrop);
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 40px 0 rgba(31, 38, 135, 0.5);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #fecfef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--text-secondary);
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .quiz-card {
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-card::after {
+            content: '🌸';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .quiz-card:hover::after {
+            opacity: 1;
+        }
+
+        .quiz-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .quiz-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .quiz-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .upload-section {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-area:hover {
+            border-color: var(--accent-color);
+            background: rgba(244, 114, 182, 0.1);
+            transform: scale(1.02);
+        }
+
+        .upload-area.dragover {
+            border-color: var(--success-color);
+            background: rgba(52, 211, 153, 0.1);
+            animation: pulse 1s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .upload-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .upload-input {
+            display: none;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: var(--backdrop);
+            -webkit-backdrop-filter: var(--backdrop);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn.primary {
+            background: var(--gradient-4);
+            border: none;
+            color: #1f2937;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(168, 237, 234, 0.4);
+        }
+
+        .btn.primary:hover {
+            box-shadow: 0 8px 25px rgba(168, 237, 234, 0.6);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .quiz-section {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .quiz-header {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--secondary-bg);
+            border-radius: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .quiz-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .quiz-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 12px;
+            background: var(--secondary-bg);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-4);
+            transition: width 0.3s ease;
+            width: 0%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .question-card {
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .question-number {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .question-number::before {
+            content: '✨';
+            font-size: 1.2rem;
+        }
+
+        .question-text {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .options-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .option {
+            padding: 1.2rem;
+            background: var(--secondary-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .option:hover::before {
+            left: 100%;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px) scale(1.02);
+            border-color: var(--accent-color);
+        }
+
+        .option.selected {
+            background: rgba(244, 114, 182, 0.2);
+            border-color: var(--accent-color);
+            transform: scale(1.02);
+        }
+
+        .option.correct {
+            background: rgba(52, 211, 153, 0.2);
+            border-color: var(--success-color);
+            animation: correctAnswer 0.6s ease;
+        }
+
+        .option.incorrect {
+            background: rgba(248, 113, 113, 0.2);
+            border-color: var(--error-color);
+            animation: shake 0.6s ease;
+        }
+
+        @keyframes correctAnswer {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1.02); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .option input[type="radio"] {
+            display: none;
+        }
+
+        .option-label {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .option.selected .option-label {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .option.correct .option-label {
+            background: var(--success-color);
+            border-color: var(--success-color);
+            color: white;
+        }
+
+        .quiz-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .quiz-actions {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .results-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .results-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            margin: 2rem auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-ring {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(var(--success-color) 0deg, var(--success-color) var(--score-deg), var(--secondary-bg) var(--score-deg));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: rotate 2s ease-out;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(-90deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        .score-inner {
+            width: 170px;
+            height: 170px;
+            background: var(--primary-bg);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: var(--backdrop);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .score-text {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--success-color);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .advice-card {
+            padding: 2rem;
+            margin: 2rem 0;
+            background: var(--gradient-4);
+            border-radius: 20px;
+            color: #1f2937;
+            text-align: left;
+        }
+
+        .advice-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .advice-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .results-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .summary-card {
+            padding: 1.5rem;
+            text-align: center;
+            background: var(--secondary-bg);
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .summary-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .summary-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .review-section {
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .review-item {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 16px;
+            background: var(--secondary-bg);
+            transition: all 0.3s ease;
+        }
+
+        .review-item:hover {
+            transform: translateX(5px);
+        }
+
+        .review-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .review-answer {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .review-correct {
+            color: var(--success-color);
+            font-weight: 600;
+        }
+
+        .review-incorrect {
+            color: var(--error-color);
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .floating-submit {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--gradient-2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: floatButton 3s ease-in-out infinite;
+        }
+
+        @keyframes floatButton {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .next-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            pointer-events: none;
+        }
+
+        .next-btn:active::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .glass-card {
+                margin: 0.5rem;
+            }
+            
+            .quiz-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .quiz-actions {
+                flex-direction: column;
+            }
+            
+            .floating-submit {
+                bottom: 10px;
+                right: 10px;
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>GlassQuiz</h1>
+            <p>Your Premium MCQ Testing Platform ✨</p>
+        </div>
+
+        <div class="main-content">
+            <div class="glass-card upload-section">
+                <h2>Choose Your Quiz</h2>
+                <div class="quiz-grid" id="quizGrid">
+                    <div class="glass-card quiz-card" data-quiz="programming">
+                        <div class="quiz-title">Programming Fundamentals</div>
+                        <div class="quiz-description">Test your knowledge of basic programming concepts with 10 fun questions!</div>
+                        <div class="quiz-stats">
+                            <span><i class="fas fa-question-circle"></i> 10 Questions</span>
+                            <span><i class="fas fa-clock"></i> 5 Min</span>
+                        </div>
+                    </div>
+                    <div class="glass-card quiz-card" data-quiz="web">
+                        <div class="quiz-title">Web Development</div>
+                        <div class="quiz-description">Explore HTML, CSS, and JavaScript in this interactive quiz!</div>
+                        <div class="quiz-stats">
+                            <span><i class="fas fa-question-circle"></i> 8 Questions</span>
+                            <span><i class="fas fa-clock"></i> 4 Min</span>
+                        </div>
+                    </div>
+                    <div class="glass-card quiz-card" data-quiz="design">
+                        <div class="quiz-title">UI/UX Design</div>
+                        <div class="quiz-description">Test your design sense and user experience knowledge!</div>
+                        <div class="quiz-stats">
+                            <span><i class="fas fa-question-circle"></i> 6 Questions</span>
+                            <span><i class="fas fa-clock"></i> 3 Min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <div class="upload-text">
+                        <strong>Upload your JSON quiz file</strong><br>
+                        or drag and drop here
+                    </div>
+                    <input accept=".json" class="upload-input" id="fileInput" type="file"/>
+                    <button class="btn primary" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-file-upload"></i>
+                        Choose File
+                    </button>
+                </div>
+            </div>
+
+            <div class="quiz-section" id="quizSection">
+                <div class="glass-card">
+                    <div class="quiz-header">
+                        <div class="quiz-progress">
+                            <span id="questionCounter">Question 1 of 10</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                        </div>
+                        <div class="quiz-timer">
+                            <i class="fas fa-clock"></i>
+                            <span id="timer">00:00</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-number" id="questionNumber">Question 1</div>
+                        <div class="question-text" id="questionText">Loading question...</div>
+                        <div class="options-container" id="optionsContainer">
+                        </div>
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button class="btn" id="prevBtn" style="display: none;">
+                            <i class="fas fa-arrow-left"></i>
+                            Previous
+                        </button>
+                        <button class="btn next-btn" disabled="" id="nextBtn">
+                            Next
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection">
+                <div class="glass-card">
+                    <div class="results-header">
+                        <h2>Quiz Complete! 🎉</h2>
+                        <p>Here's how you did</p>
+                    </div>
+
+                    <div class="score-circle">
+                        <div class="score-ring" id="scoreRing">
+                            <div class="score-inner">
+                                <div class="score-text" id="scoreText">0%</div>
+                                <div class="score-label">Score</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="advice-card" id="adviceCard">
+                        <div class="advice-title">
+                            <i class="fas fa-lightbulb"></i>
+                            Your Personalized Advice
+                        </div>
+                        <div class="advice-content" id="adviceContent">
+                            Loading your advice...
+                        </div>
+                    </div>
+
+                    <div class="results-summary">
+                        <div class="summary-card">
+                            <div class="summary-icon">✅</div>
+                            <div class="summary-value" id="correctAnswers">0</div>
+                            <div class="summary-label">Correct Answers</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">❌</div>
+                            <div class="summary-value" id="wrongAnswers">0</div>
+                            <div class="summary-label">Wrong Answers</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">⏱️</div>
+                            <div class="summary-value" id="timeTaken">00:00</div>
+                            <div class="summary-label">Time Taken</div>
+                        </div>
+                    </div>
+
+                    <div class="review-section" id="reviewSection">
+                        <h3>Review Your Answers</h3>
+                        <div id="reviewContainer"></div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button class="btn primary" onclick="location.reload()">
+                            <i class="fas fa-redo"></i>
+                            Take Another Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn primary floating-submit" id="submitQuizBtn" style="display: none;">
+        <i class="fas fa-check"></i>
+        Submit Quiz
+    </button>
+
+    <script>
+        let quizData = [];
+        let currentQuestion = 0;
+        let userAnswers = [];
+        let startTime = null;
+        let timerInterval = null;
+
+        const sampleQuizzes = {
+            programming: {
+                title: "Programming Fundamentals",
+                questions: [
+                    {
+                        question: "What is the correct way to declare a variable in JavaScript?",
+                        options: ["var x = 5", "variable x = 5", "v x = 5", "declare x = 5"],
+                        correct: 0
+                    },
+                    {
+                        question: "Which of the following is NOT a programming language?",
+                        options: ["Python", "HTML", "Java", "Ruby"],
+                        correct: 1
+                    },
+                    {
+                        question: "What does CSS stand for?",
+                        options: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style Sheets", "Colorful Style Sheets"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which of these is used to store multiple values in JavaScript?",
+                        options: ["String", "Number", "Array", "Boolean"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the output of: console.log(2 + '2')?",
+                        options: ["4", "22", "Error", "undefined"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which method is used to add an element to the end of an array?",
+                        options: ["push()", "pop()", "shift()", "unshift()"],
+                        correct: 0
+                    },
+                    {
+                        question: "What does HTML stand for?",
+                        options: ["Hyper Text Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyperlink and Text Markup Language"],
+                        correct: 0
+                    },
+                    {
+                        question: "Which CSS property is used to change the text color?",
+                        options: ["text-color", "font-color", "color", "text-style"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is the correct syntax for a function in JavaScript?",
+                        options: ["function myFunction() {}", "func myFunction() {}", "def myFunction() {}", "function:myFunction() {}"],
+                        correct: 0
+                    },
+                    {
+                        question: "Which of these is a loop structure in JavaScript?",
+                        options: ["repeat-while", "for", "loop", "iterate"],
+                        correct: 1
+                    }
+                ]
+            },
+            web: {
+                title: "Web Development",
+                questions: [
+                    {
+                        question: "What is the latest version of HTML?",
+                        options: ["HTML4", "HTML5", "XHTML", "HTML2020"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which HTTP method is used to send data to a server?",
+                        options: ["GET", "POST", "FETCH", "SEND"],
+                        correct: 1
+                    },
+                    {
+                        question: "What does API stand for?",
+                        options: ["Application Programming Interface", "Advanced Programming Integration", "Automated Protocol Interface", "Application Process Integration"],
+                        correct: 0
+                    },
+                    {
+                        question: "Which CSS property controls the space between elements?",
+                        options: ["padding", "margin", "spacing", "border"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is the default port for HTTP?",
+                        options: ["443", "80", "8080", "3000"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which of these is a JavaScript framework?",
+                        options: ["Laravel", "Django", "React", "Flask"],
+                        correct: 2
+                    },
+                    {
+                        question: "What does DOM stand for?",
+                        options: ["Document Object Model", "Data Object Model", "Document Oriented Model", "Display Object Management"],
+                        correct: 0
+                    },
+                    {
+                        question: "Which HTML tag is used for linking CSS files?",
+                        options: ["<style>", "<css>", "<link>", "<stylesheet>"],
+                        correct: 2
+                    }
+                ]
+            },
+            design: {
+                title: "UI/UX Design",
+                questions: [
+                    {
+                        question: "What is the principle of proximity in design?",
+                        options: ["Elements close together are related", "All elements must be far apart", "Using similar colors", "Making everything big"],
+                        correct: 0
+                    },
+                    {
+                        question: "Which tool is primarily used for UI/UX design?",
+                        options: ["Excel", "Figma", "Notepad", "Calculator"],
+                        correct: 1
+                    },
+                    {
+                        question: "What does UX stand for?",
+                        options: ["User Experience", "Universal XML", "User XML", "Ultimate Experience"],
+                        correct: 0
+                    },
+                    {
+                        question: "Which color scheme uses opposite colors on the color wheel?",
+                        options: ["Analogous", "Monochromatic", "Complementary", "Triadic"],
+                        correct: 2
+                    },
+                    {
+                        question: "What is a wireframe?",
+                        options: ["A 3D model", "A basic layout sketch", "A color palette", "A font family"],
+                        correct: 1
+                    },
+                    {
+                        question: "Which of these is NOT a design principle?",
+                        options: ["Contrast", "Repetition", "Alignment", "Calculation"],
+                        correct: 3
+                    }
+                ]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeEventListeners();
+            loadQuizCards();
+        });
+
+        function initializeEventListeners() {
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+
+            uploadArea.addEventListener('click', () => fileInput.click());
+            uploadArea.addEventListener('dragover', handleDragOver);
+            uploadArea.addEventListener('drop', handleFileDrop);
+            uploadArea.addEventListener('dragleave', handleDragLeave);
+
+            fileInput.addEventListener('change', handleFileSelect);
+        }
+
+        function loadQuizCards() {
+            const quizCards = document.querySelectorAll('.quiz-card');
+            quizCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const quizType = this.getAttribute('data-quiz');
+                    loadQuiz(sampleQuizzes[quizType]);
+                });
+            });
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('dragover');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('dragover');
+        }
+
+        function handleFileDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                processFile(files[0]);
+            }
+        }
+
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (file) {
+                processFile(file);
+            }
+        }
+
+        function processFile(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    loadQuiz(data);
+                } catch (error) {
+                    alert('Invalid JSON file. Please check your file format.');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function loadQuiz(data) {
+            quizData = data.questions;
+            currentQuestion = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            
+            document.querySelector('.upload-section').style.display = 'none';
+            document.getElementById('quizSection').style.display = 'block';
+            document.getElementById('submitQuizBtn').style.display = 'block';
+            
+            startTime = new Date();
+            startTimer();
+            displayQuestion();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                const elapsed = Math.floor((new Date() - startTime) / 1000);
+                const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
+                const seconds = (elapsed % 60).toString().padStart(2, '0');
+                document.getElementById('timer').textContent = `${minutes}:${seconds}`;
+            }, 1000);
+        }
+
+        function displayQuestion() {
+            const question = quizData[currentQuestion];
+            document.getElementById('questionNumber').textContent = `Question ${currentQuestion + 1}`;
+            document.getElementById('questionText').textContent = question.question;
+            document.getElementById('questionCounter').textContent = `Question ${currentQuestion + 1} of ${quizData.length}`;
+            
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionDiv = createOption(option, index);
+                optionsContainer.appendChild(optionDiv);
+            });
+            
+            updateNavigationButtons();
+        }
+
+        function createOption(text, index) {
+            const optionDiv = document.createElement('div');
+            optionDiv.className = 'option';
+            if (userAnswers[currentQuestion] === index) {
+                optionDiv.classList.add('selected');
+            }
+            
+            optionDiv.innerHTML = `
+                <div class="option-label">${String.fromCharCode(65 + index)}</div>
+                <div>${text}</div>
+            `;
+            
+            optionDiv.addEventListener('click', () => selectOption(index));
+            return optionDiv;
+        }
+
+        function selectOption(index) {
+            userAnswers[currentQuestion] = index;
+            document.querySelectorAll('.option').forEach((opt, i) => {
+                opt.classList.toggle('selected', i === index);
+            });
+            updateNavigationButtons();
+        }
+
+        function updateNavigationButtons() {
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            
+            prevBtn.style.display = currentQuestion > 0 ? 'block' : 'none';
+            
+            nextBtn.disabled = userAnswers[currentQuestion] === null;
+            nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Finish' : 'Next';
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestion] === null) return;
+            
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.disabled = true;
+            nextBtn.innerHTML = '<div class="loading-spinner"></div> Loading...';
+            
+            setTimeout(() => {
+                if (currentQuestion < quizData.length - 1) {
+                    currentQuestion++;
+                    displayQuestion();
+                } else {
+                    finishQuiz();
+                }
+                nextBtn.disabled = false;
+                nextBtn.innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
+            }, 3000);
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+            }
+        }
+
+        function finishQuiz() {
+            clearInterval(timerInterval);
+            calculateResults();
+            displayResults();
+        }
+
+        function calculateResults() {
+            let correct = 0;
+            let wrong = 0;
+            
+            userAnswers.forEach((answer, index) => {
+                if (answer === quizData[index].correct) {
+                    correct++;
+                } else {
+                    wrong++;
+                }
+            });
+            
+            const score = Math.round((correct / quizData.length) * 100);
+            const timeTaken = document.getElementById('timer').textContent;
+            
+            return { score, correct, wrong, timeTaken };
+        }
+
+        function displayResults() {
+            const { score, correct, wrong, timeTaken } = calculateResults();
+            
+            document.getElementById('quizSection').style.display = 'none';
+            document.getElementById('submitQuizBtn').style.display = 'none';
+            document.getElementById('resultsSection').style.display = 'block';
+            
+            document.getElementById('scoreText').textContent = `${score}%`;
+            document.getElementById('scoreRing').style.setProperty('--score-deg', `${(score / 100) * 360}deg`);
+            document.getElementById('correctAnswers').textContent = correct;
+            document.getElementById('wrongAnswers').textContent = wrong;
+            document.getElementById('timeTaken').textContent = timeTaken;
+            
+            displayAdvice(score);
+            displayReview();
+        }
+
+        function displayAdvice(score) {
+            let advice = '';
+            let emoji = '';
+            
+            if (score >= 90) {
+                advice = `Incredible work! 🌟 You aced this quiz! Your knowledge is outstanding. You're ready to tackle even more advanced topics. Consider exploring specialized areas or helping others learn.`;
+                emoji = '🏆';
+            } else if (score >= 70) {
+                advice = `Great job! 👏 You're doing really well. With a bit more practice on the questions you missed, you'll be at the top of your game. Focus on the areas where you had trouble.`;
+                emoji = '⭐';
+            } else if (score >= 50) {
+                advice = `Good effort! 💪 You're on the right track. Some areas need more attention. Review the concepts you struggled with and try again. You're closer than you think!`;
+                emoji = '📚';
+            } else {
+                advice = `Don't worry! 🤗 Everyone starts somewhere. This is a great opportunity to learn. Take your time to review the fundamentals and try again. Learning is a journey!`;
+                emoji = '💝';
+            }
+            
+            document.getElementById('adviceContent').innerHTML = `
+                <div style="text-align: center; margin-bottom: 1rem; font-size: 2rem;">${emoji}</div>
+                ${advice}
+            `;
+        }
+
+        function displayReview() {
+            const reviewContainer = document.getElementById('reviewContainer');
+            reviewContainer.innerHTML = '';
+            
+            quizData.forEach((q, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer === q.correct;
+                
+                const reviewItem = document.createElement('div');
+                reviewItem.className = 'review-item';
+                reviewItem.innerHTML = `
+                    <div class="review-question">${index + 1}. ${q.question}</div>
+                    <div class="review-answer">
+                        Your answer: <span class="${isCorrect ? 'review-correct' : 'review-incorrect'}">${q.options[userAnswer] || 'Not answered'}</span><br>
+                        Correct answer: <span class="review-correct">${q.options[q.correct]}</span>
+                    </div>
+                `;
+                reviewContainer.appendChild(reviewItem);
+            });
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+        document.getElementById('prevBtn').addEventListener('click', previousQuestion);
+        document.getElementById('submitQuizBtn').addEventListener('click', finishQuiz);
+    </script>
+</body>
+</html>
