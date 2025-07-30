@@ -1,0 +1,505 @@
+{
+  "title": "Fullstack Quiz",
+  "questions": [
+    {
+      "question": "What is the primary purpose of Node.js?",
+      "options": ["Multi-threading", "Event-driven I/O", "Blocking I/O", "Static file serving"],
+      "correct": 1
+    },
+    {
+      "question": "Which HTTP method updates resources in a REST API?",
+      "options": ["GET", "POST", "PUT", "DELETE"],
+      "correct": 2
+    },
+    {
+      "question": "Which React hook manages state in functional components?",
+      "options": ["useEffect", "useState", "useContext", "useReducer"],
+      "correct": 1
+    },
+    {
+      "question": "How is a MongoDB schema defined in Mongoose?",
+      "options": ["mongoose.Model", "mongoose.Schema", "mongoose.Document", "mongoose.Collection"],
+      "correct": 1
+    },
+    {
+      "question": "What is the default port for an Express.js server?",
+      "options": ["8080", "3000", "5000", "8000"],
+      "correct": 1
+    },
+    {
+      "question": "What does the async keyword do in JavaScript?",
+      "options": ["Blocks execution", "Enables async functions", "Runs synchronously", "Disables promises"],
+      "correct": 1
+    },
+    {
+      "question": "Which React hook handles side effects?",
+      "options": ["useState", "useEffect", "useMemo", "useCallback"],
+      "correct": 1
+    },
+    {
+      "question": "What is a MongoDB ObjectId?",
+      "options": ["A string index", "A 12-byte unique ID", "A timestamp", "A 32-bit integer"],
+      "correct": 1
+    },
+    {
+      "question": "How do you enable CORS in Express.js?",
+      "options": ["app.enable('cors')", "app.use(cors())", "app.set('cors', true)", "app.configure(cors)"],
+      "correct": 1
+    },
+    {
+      "question": "What does JSX stand for in React?",
+      "options": ["JavaScript Extension", "JavaScript XML", "JSON XML", "JavaScript Syntax"],
+      "correct": 1
+    },
+    {
+      "question": "Which Node.js module handles file system operations?",
+      "options": ["path", "fs", "http", "url"],
+      "correct": 1
+    },
+    {
+      "question": "Which Express.js method defines a route handler?",
+      "options": ["app.handler()", "app.get()", "app.route()", "app.method()"],
+      "correct": 1
+    },
+    {
+      "question": "What is a prop in React?",
+      "options": ["A state variable", "A property passed to components", "A lifecycle method", "A function component"],
+      "correct": 1
+    },
+    {
+      "question": "Which MongoDB operation retrieves multiple documents?",
+      "options": ["findOne", "find", "aggregate", "query"],
+      "correct": 1
+    },
+    {
+      "question": "How do you create an Express.js app?",
+      "options": ["new Express()", "express()", "express.create()", "app.init()"],
+      "correct": 1
+    },
+    {
+      "question": "What is the purpose of useMemo in React?",
+      "options": ["Manage state", "Memoize values", "Handle side effects", "Access context"],
+      "correct": 1
+    },
+    {
+      "question": "What is the Node.js event loop?",
+      "options": ["A thread pool", "A single-threaded loop", "A database connection", "A multi-threaded process"],
+      "correct": 1
+    },
+    {
+      "question": "Which MongoDB method updates a single document?",
+      "options": ["updateMany", "updateOne", "replaceOne", "modifyOne"],
+      "correct": 1
+    },
+    {
+      "question": "Which Express.js middleware parses JSON bodies?",
+      "options": ["bodyParser.json()", "express.json()", "app.parseJSON()", "express.body()"],
+      "correct": 1
+    },
+    {
+      "question": "Which React lifecycle method handles cleanup?",
+      "options": ["componentDidMount", "componentWillUnmount", "useEffect cleanup", "componentDidUpdate"],
+      "correct": 1
+    },
+    {
+      "question": "What does Promise.all do in JavaScript?",
+      "options": ["Resolves sequentially", "Resolves concurrently", "Rejects all promises", "Retries promises"],
+      "correct": 1
+    },
+    {
+      "question": "What does next() do in Express middleware?",
+      "options": ["Ends request", "Calls next middleware", "Skips middleware", "Redirects response"],
+      "correct": 1
+    },
+    {
+      "question": "How is data passed to a React child component?",
+      "options": ["State", "Props", "Context", "Hooks"],
+      "correct": 1
+    },
+    {
+      "question": "What MongoDB feature ensures atomic operations?",
+      "options": ["Indexes", "Transactions", "Sharding", "Replication"],
+      "correct": 1
+    },
+    {
+      "question": "What is process.env used for in Node.js?",
+      "options": ["Manage file paths", "Access environment variables", "Handle HTTP requests", "Control event loop"],
+      "correct": 1
+    },
+    {
+      "question": "Which React hook accesses context?",
+      "options": ["useState", "useContext", "useEffect", "useReducer"],
+      "correct": 1
+    },
+    {
+      "question": "How do you handle 404 errors in Express.js?",
+      "options": ["app.error(404)", "app.use((req, res) => res.status(404).send())", "app.set('404')", "app.route(404)"],
+      "correct": 1
+    },
+    {
+      "question": "What does MongoDB's $push operator do?",
+      "options": ["Removes element", "Adds to array", "Updates document", "Deletes document"],
+      "correct": 1
+    },
+    {
+      "question": "What is a closure in JavaScript?",
+      "options": ["A promise wrapper", "A function with lexical scope", "A class instance", "A global variable"],
+      "correct": 1
+    },
+    {
+      "question": "What is the purpose of key in React lists?",
+      "options": ["State management", "Unique identifier for elements", "Event handling", "Component styling"],
+      "correct": 1
+    },
+    {
+      "question": "Which Node.js module creates HTTP servers?",
+      "options": ["fs", "http", "path", "url"],
+      "correct": 1
+    },
+    {
+      "question": "What is sharding in MongoDB?",
+      "options": ["Data replication", "Data partitioning", "Data indexing", "Data compression"],
+      "correct": 1
+    },
+    {
+      "question": "How do you define a route parameter in Express.js?",
+      "options": ["/param", "/:param", "?param", "*param"],
+      "correct": 1
+    },
+    {
+      "question": "What is the purpose of useReducer in React?",
+      "options": ["Handle side effects", "Manage complex state", "Memoize functions", "Access context"],
+      "correct": 1
+    },
+    {
+      "question": "What does map() do in JavaScript?",
+      "options": ["Filters array", "Transforms array", "Reduces array", "Sorts array"],
+      "correct": 1
+    },
+    {
+      "question": "What is a MongoDB index?",
+      "options": ["A document collection", "A data structure for queries", "A backup system", "A user role"],
+      "correct": 1
+    },
+    {
+      "question": "What is res.json() used for in Express.js?",
+      "options": ["Parse JSON request", "Send JSON response", "Redirect response", "End request"],
+      "correct": 1
+    },
+    {
+      "question": "What triggers a React re-render?",
+      "options": ["State change", "Prop change", "Both A and B", "Parent render"],
+      "correct": 2
+    },
+    {
+      "question": "What is require used for in Node.js?",
+      "options": ["Export modules", "Import modules", "Run async code", "Handle errors"],
+      "correct": 1
+    },
+    {
+      "question": "What does MongoDB's $set operator do?",
+      "options": ["Replaces document", "Updates specific fields", "Deletes fields", "Adds array"],
+      "correct": 1
+    },
+    {
+      "question": "How do you serve static files in Express.js?",
+      "options": ["app.serve()", "app.use(express.static())", "app.static()", "app.file()"],
+      "correct": 1
+    },
+    {
+      "question": "What is a controlled component in React?",
+      "options": ["Stateless component", "Form input tied to state", "Context provider", "Higher-order component"],
+      "correct": 1
+    },
+    {
+      "question": "What does await do in JavaScript?",
+      "options": ["Blocks execution", "Pauses async function", "Retries promises", "Resolves callbacks"],
+      "correct": 1
+    },
+    {
+      "question": "What is a MongoDB replica set?",
+      "options": ["A sharded cluster", "A group of backup servers", "A single database", "A query optimizer"],
+      "correct": 1
+    },
+    {
+      "question": "What is app.listen() used for in Express.js?",
+      "options": ["Define routes", "Start server", "Handle errors", "Parse requests"],
+      "correct": 1
+    },
+    {
+      "question": "What is the purpose of useCallback in React?",
+      "options": ["Manage state", "Memoize functions", "Handle side effects", "Access context"],
+      "correct": 1
+    },
+    {
+      "question": "What is a stream in Node.js?",
+      "options": ["A data buffer", "Continuous data flow", "A file reader", "A database connection"],
+      "correct": 1
+    },
+    {
+      "question": "What does aggregate do in MongoDB?",
+      "options": ["Finds documents", "Groups and processes data", "Updates documents", "Deletes documents"],
+      "correct": 1
+    },
+    {
+      "question": "What is an Express.js middleware?",
+      "options": ["A route handler", "A request parser", "A function in request-response cycle", "A database connector"],
+      "correct": 2
+    },
+    {
+      "question": "What is the React virtual DOM?",
+      "options": ["A state manager", "A lightweight DOM copy", "A routing system", "A database model"],
+      "correct": 1
+    },
+    {
+      "question": "What is Array.filter() used for in JavaScript?",
+      "options": ["Transform array", "Select elements", "Reduce array", "Sort array"],
+      "correct": 1
+    },
+    {
+      "question": "What does MongoDB's $lookup operator do?",
+      "options": ["Update documents", "Join collections", "Delete documents", "Index fields"],
+      "correct": 1
+    },
+    {
+      "question": "How do you handle errors in Express.js?",
+      "options": ["app.error()", "app.use((err, req, res, next) => {})", "app.catch()", "app.handle()"],
+      "correct": 1
+    },
+    {
+      "question": "What is a React fragment?",
+      "options": ["A state container", "A wrapper for multiple elements", "A context provider", "A lifecycle method"],
+      "correct": 1
+    },
+    {
+      "question": "What is path.join() used for in Node.js?",
+      "options": ["Read files", "Combine file paths", "Write files", "Delete files"],
+      "correct": 1
+    },
+    {
+      "question": "What does MongoDB's $inc operator do?",
+      "options": ["Decrements field", "Increments field", "Sets field", "Removes field"],
+      "correct": 1
+    },
+    {
+      "question": "What does req.params contain in Express.js?",
+      "options": ["Query strings", "Route parameters", "Body data", "Headers"],
+      "correct": 1
+    },
+    {
+      "question": "What is the purpose of useRef in React?",
+      "options": ["Manage state", "Store mutable references", "Handle side effects", "Memoize values"],
+      "correct": 1
+    },
+    {
+      "question": "What is the JavaScript spread operator (...) used for?",
+      "options": ["Concatenates strings", "Clones/spreads arrays/objects", "Filters arrays", "Reduces arrays"],
+      "correct": 1
+    },
+    {
+      "question": "What is a MongoDB capped collection?",
+      "options": ["Encrypted collection", "Fixed-size collection", "Indexed collection", "Sharded collection"],
+      "correct": 1
+    },
+    {
+      "question": "What does res.status() do in Express.js?",
+      "options": ["Sends JSON response", "Sets HTTP status code", "Redirects request", "Ends response"],
+      "correct": 1
+    },
+    {
+      "question": "What is Redux used for in React?",
+      "options": ["Routing", "State management", "API calls", "Component rendering"],
+      "correct": 1
+    },
+    {
+      "question": "What is module.exports used for in Node.js?",
+      "options": ["Import modules", "Export modules", "Run async code", "Handle errors"],
+      "correct": 1
+    },
+    {
+      "question": "What is MongoDB's $or operator?",
+      "options": ["Logical AND", "Logical OR", "Negation", "Comparison"],
+      "correct": 1
+    },
+    {
+      "question": "What is req.query used for in Express.js?",
+      "options": ["Route parameters", "Query strings", "Body data", "Headers"],
+      "correct": 1
+    },
+    {
+      "question": "What is a higher-order component in React?",
+      "options": ["Stateful component", "A component wrapping another", "Context provider", "Functional component"],
+      "correct": 1
+    },
+    {
+      "question": "What does reduce() do in JavaScript?",
+      "options": ["Filters array", "Transforms array", "Reduces to single value", "Sorts array"],
+      "correct": 2
+    },
+    {
+      "question": "What is MongoDB's $gte operator?",
+      "options": ["Less than or equal", "Greater than or equal", "Equal to", "Not equal"],
+      "correct": 1
+    },
+    {
+      "question": "What is app.use() used for in Express.js?",
+      "options": ["Define routes", "Mount middleware", "Start server", "Handle errors"],
+      "correct": 1
+    },
+    {
+      "question": "What is the purpose of React.StrictMode?",
+      "options": ["Performance optimization", "Debugging aid", "State management", "Routing"],
+      "correct": 1
+    },
+    {
+      "question": "What is the Node.js http module used for?",
+      "options": ["File operations", "HTTP servers", "Path handling", "URL parsing"],
+      "correct": 1
+    },
+    {
+      "question": "What does drop() do in MongoDB?",
+      "options": ["Updates collection", "Deletes collection", "Indexes collection", "Replicates collection"],
+      "correct": 1
+    },
+    {
+      "question": "What is res.redirect() used for in Express.js?",
+      "options": ["Send JSON", "Redirect to URL", "Set status", "Parse body"],
+      "correct": 1
+    },
+    {
+      "question": "What is the React Context API used for?",
+      "options": ["State management", "Routing", "API calls", "Global data sharing"],
+      "correct": 3
+    },
+    {
+      "question": "What is setTimeout used for in JavaScript?",
+      "options": ["Synchronous delay", "Asynchronous delay", "Promise resolution", "Event handling"],
+      "correct": 1
+    },
+    {
+      "question": "What is MongoDB's $elemMatch operator?",
+      "options": ["Updates arrays", "Matches array elements", "Removes arrays", "Indexes arrays"],
+      "correct": 1
+    },
+    {
+      "question": "What is req.body used for in Express.js?",
+      "options": ["Query strings", "Route parameters", "Request payload", "Headers"],
+      "correct": 2
+    },
+    {
+      "question": "What is a pure component in React?",
+      "options": ["Manages state", "Avoids unnecessary renders", "Handles side effects", "Wraps components"],
+      "correct": 1
+    },
+    {
+      "question": "What is Buffer used for in Node.js?",
+      "options": ["Manage strings", "Handle binary data", "Parse JSON", "Read files"],
+      "correct": 1
+    },
+    {
+      "question": "What is MongoDB's $exists operator?",
+      "options": ["Updates fields", "Checks field existence", "Deletes fields", "Indexes fields"],
+      "correct": 1
+    },
+    {
+      "question": "What does app.post() handle in Express.js?",
+      "options": ["GET requests", "POST requests", "PUT requests", "DELETE requests"],
+      "correct": 1
+    },
+    {
+      "question": "What is the purpose of useEffect cleanup in React?",
+      "options": ["Manage state", "Prevent memory leaks", "Handle props", "Optimize rendering"],
+      "correct": 1
+    },
+    {
+      "question": "What is Array.some() used for in JavaScript?",
+      "options": ["Transform array", "Check if any element passes", "Reduce array", "Filter array"],
+      "correct": 1
+    },
+    {
+      "question": "What is a MongoDB compound index?",
+      "options": ["Single field index", "Index on multiple fields", "Unique index", "Capped index"],
+      "correct": 1
+    },
+    {
+      "question": "What is res.send() used for in Express.js?",
+      "options": ["Set status", "Send response", "Redirect", "Parse body"],
+      "correct": 1
+    },
+    {
+      "question": "What is a React portal?",
+      "options": ["State container", "Render outside DOM hierarchy", "Context provider", "Higher-order component"],
+      "correct": 1
+    },
+    {
+      "question": "What is the Node.js cluster module used for?",
+      "options": ["Multi-threading", "Forking processes", "File handling", "HTTP servers"],
+      "correct": 1
+    },
+    {
+      "question": "What does MongoDB's $unset operator do?",
+      "options": ["Sets field", "Removes field", "Increments field", "Updates field"],
+      "correct": 1
+    },
+    {
+      "question": "What is req.headers used for in Express.js?",
+      "options": ["Parse body", "Access request headers", "Handle routes", "Set status"],
+      "correct": 1
+    },
+    {
+      "question": "What is the purpose of React.memo in React?",
+      "options": ["Manage state", "Memoize components", "Handle side effects", "Access context"],
+      "correct": 1
+    },
+    {
+      "question": "What is Object.keys() used for in JavaScript?",
+      "options": ["Get object values", "Get object keys", "Clone object", "Merge objects"],
+      "correct": 1
+    },
+    {
+      "question": "What is MongoDB's $in operator?",
+      "options": ["Matches all values", "Matches any value in array", "Excludes values", "Updates values"],
+      "correct": 1
+    },
+    {
+      "question": "What is app.all() used for in Express.js?",
+      "options": ["Define single route", "Handle all HTTP methods", "Parse body", "Set status"],
+      "correct": 1
+    },
+    {
+      "question": "What is the purpose of useImperativeHandle in React?",
+      "options": ["Manage state", "Expose methods to parent", "Handle side effects", "Memoize values"],
+      "correct": 1
+    },
+    {
+      "question": "What is the Node.js os module used for?",
+      "options": ["File operations", "System information", "HTTP servers", "URL parsing"],
+      "correct": 1
+    },
+    {
+      "question": "What is MongoDB's $nin operator?",
+      "options": ["In array", "Not in array", "Equal to", "Not equal"],
+      "correct": 1
+    },
+    {
+      "question": "What is res.render() used for in Express.js?",
+      "options": ["Send JSON", "Render template", "Redirect", "Set status"],
+      "correct": 1
+    },
+    {
+      "question": "What is a custom hook in React?",
+      "options": ["State container", "Reusable logic function", "Context provider", "Higher-order component"],
+      "correct": 1
+    },
+    {
+      "question": "What is Array.every() used for in JavaScript?",
+      "options": ["Transform array", "Check if all elements pass", "Reduce array", "Filter array"],
+      "correct": 1
+    },
+    {
+      "question": "What is MongoDB's $regex operator?",
+      "options": ["Update fields", "Regular expression match", "Delete fields", "Index fields"],
+      "correct": 1
+    }
+  ]
+}
